@@ -1,0 +1,9 @@
+{% extends 'dfdj12/base.html' %}
+
+{% block content %}
+
+    {% for i in data %}
+        <div>Id save: {{ i.id }} data:{{ i.data }}</div>
+    {% endfor %}
+
+{% endblock %}
