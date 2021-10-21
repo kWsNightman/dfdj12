@@ -1,0 +1,28 @@
+.badge {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
+}
+
+.badge-pill {
+    padding-right: .75em;
+    padding-left: .75em;
+}
+
+.badge-outline-success {
+    color: #52c41a;
+    border: 1px solid #52c41a;
+}
+
+.badge-outline-primary {
+    border: 1px solid #038fde;
+    color: #038fde;
+}
+
+.badge-outline-danger {
+    border: 1px solid #f5222d;
+    color: #f5222d;
+}
+
+.badge-outline-secondary {
+    border: 1px solid #fa8c16;
+    color: #fa8c16;
+}

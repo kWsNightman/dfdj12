@@ -1,0 +1,22 @@
+{% extends 'dfdj12/base.html' %}
+
+
+{% block content %}
+    {{ context }}
+    <form method="post">
+        <div class="form-group">
+            <p>
+                <label for="id_name_0">Name 0</label>
+                <input name="name_0" id="id_name_0" class="form-control" type="text" maxlength="50"
+                       placeholder="Enter name" required="">
+        </div>
+        </p>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+    </form>
+    <button class="btn btn-primary" onclick="addField()" style="margin-top: 10px;">Add new name field</button>
+{% endblock %}
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="{{ url_for('static',filename='dinamicformapp/add_field.js') }}"></script>
+{% endblock %}

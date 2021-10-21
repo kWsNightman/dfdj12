@@ -1,0 +1,331 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block content %}
+
+    <div class="dt-page__header">
+        <h1 class="dt-page__title">Actors</h1>
+    </div>
+
+    <div class="dt-card">
+
+        <div class="dt-card__body">
+
+            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                    data-target="#collapseExample" aria-expanded="false"
+                    aria-controls="collapseExample">
+                Create new actor
+            </button>
+
+            <div class="row justify-content-center collapse" id="collapseExample">
+                <div class="col-lg-6 mt-4 mb-4">
+                    <form class="create-actor-form" id="create-actor-form">
+
+                        <div class="create-actor-form__group">
+                            <label class="create-actor-form__label" for="select1">Type</label>
+                            <select class="form-control" id="create-actor-form-actor-type"
+                                    name="create-actor-form-actor-type">
+                                <option value="create_user">Create user</option>
+                                <option value="create_group">Create group</option>
+                            </select>
+                        </div>
+
+                        <div id="create-actor-form__changing-content">
+
+                            <div class="create-actor-form__group">
+                                <label class="create-actor-form__label" for="create-actor-form-first-name">First
+                                    name</label>
+                                <input class="form-control" type="text" id="create-actor-form-first-name"
+                                       name="first_name" letterOnly>
+                            </div>
+
+                            <div class="create-actor-form__group">
+                                <label class="create-actor-form__label" for="create-actor-form-last-name">Last
+                                    name</label>
+                                <input class="form-control" type="text" id="create-actor-form-last-name"
+                                       name="last_name" letterOnly>
+                            </div>
+
+                            <div class="create-actor-form__group">
+                                <label class="create-actor-form__label" for="create-actor-form-e-mail">E-mail</label>
+                                <input class="form-control" type="email" id="create-actor-form-e-mail" name="email">
+                            </div>
+
+                            <div class="create-actor-form__group">
+                                <label class="create-actor-form__label"
+                                       for="create-actor-form-password">Password</label>
+                                <input class="form-control" type="password" id="create-actor-form-password"
+                                       name="password">
+                            </div>
+
+                            <div class="create-actor-form__group">
+                                <label class="create-actor-form__label" for="create-actor-form-groups">Groups</label>
+                                <select class="form-control" id="create-actor-form-groups"
+                                        name="groups" multiple
+                                        data-live-search="true">
+                                    {% for group in groups %}
+                                        <option value="{{ group.uuid }}">{{ group.uinfo['group_name'] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                    </form>
+                    <button class="btn btn-success float-right" id="create-actor-form__submit-button"
+                            onclick="create_actor()">Create
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="dt-card">
+        <div class="dt-card__body">
+            <div class="table-responsive">
+
+                <table id="actors" class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th class="text-uppercase" scope="col">Name</th>
+                        <th class="text-uppercase" scope="col">UUID</th>
+                        <th class="text-uppercase" scope="col">Type</th>
+                        <th class="text-uppercase" scope="col">Groups</th>
+                        <th class="text-uppercase" scope="col">Date created</th>
+                        <th class="text-uppercase" scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for actor in actors %}
+                        <tr onclick="row_click(this)"
+                            data-href="{{ url_for('auth_submodule.admin_actor', uuid=actor.uuid) }}"
+                            style="cursor: pointer;">
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{% if actor.actor_type == 'group' %}
+                                {{ actor.uinfo['group_name'] }}
+                            {% elif actor.actor_type in ['user', 'classic_user'] %}
+                                {{ actor.uinfo['first_name'] }} {{ actor.uinfo['last_name'] }}
+                            {% elif actor.actor_type == 'service' %}
+                                {{ actor.uinfo['service_name'] }}
+                            {% endif %}</td>
+                            <td>{{ actor.uuid }}</td>
+                            <td>{{ actor.actor_type }}</td>
+                            <td>{% for group in actor.get_groups() %}{{ group['uinfo']['group_name'] }}
+                                <br/>{% endfor %}
+                            </td>
+                            <td>{{ actor.created.strftime('%Y-%m-%d %H:%M') }}</td>
+                            <td>
+                                <button class="delete btn btn-outline-danger" uuid="{{ actor.uuid }}">Delete actor
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    {{ super() }}
+
+    <script>
+        Array.from(document.getElementsByClassName('delete')).forEach(
+            function (element) {
+                let uuid = element.getAttribute('uuid')
+                element.onclick = function (e) {
+                    fetch('{{ url_for('auth_submodule.admin_actors') }}', {
+                        method: "DELETE",
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({uuid: uuid})
+                    }).then(response => {
+                        if (response.ok) {
+                            document.location.reload()
+                        }
+                    })
+                }
+            })
+
+        function create_actor() {
+            if ($('#create-actor-form-actor-type option:selected').val() == 'create_user') {
+                let first_name = $('input[name="first_name"]').val()
+                let last_name = $('input[name="last_name"]').val()
+                let email = $('input[name="email"]').val()
+                let password = $('input[name="password"]').val()
+                let groups = $('select[name="groups"]').val()
+                data = {
+                    'actor_type': 'classic_user', 'uinfo': {
+                        'first_name': first_name, 'last_name': last_name,
+                        'email': email, 'password': password, 'groups': groups
+                    }
+                }
+            } else {
+                let group_name = $('input[name="group_name"]').val()
+                let weight = $('input[name="weight"]').val()
+                let description = $('textarea[name="description"]').val()
+                let users = $('select[name="users"]').val()
+                data = {
+                    'actor_type': 'group', 'uinfo': {
+                        'group_name': group_name, 'weight': Number(weight),
+                        'description': description, 'users': users
+                    }
+                }
+            }
+            fetch('{{ url_for('auth_submodule.admin_actors') }}', {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (response.ok) {
+                    document.location.reload()
+                }
+            })
+        }
+
+        $(document).ready(function () {
+
+            $('#actors thead th').each(function () {
+                let title = $(this).text();
+                const columns = ['Name', 'UUID', 'Type', 'Groups']
+                if (columns.includes(title)) {
+                    $(this).html('<br><input type="text" placeholder="Search ' + title + '" />');
+                }
+            });
+
+            $('#actors').DataTable({
+                "searching": true,
+                "ordering": false,
+                "columns": [
+                    {"searchable": false},
+                    {"searchable": true},
+                    {"searchable": true},
+                    {"searchable": true},
+                    {"searchable": true},
+                    {"searchable": false},
+                    {"searchable": false},
+                ],
+                initComplete: function () {
+                    this.api().columns().every(function () {
+                        var that = this;
+                        $('input', this.header()).on('keyup change clear', function () {
+                            if (that.search() !== this.value) {
+                                that
+                                    .search(this.value)
+                                    .draw();
+                            }
+                        });
+                    });
+                }
+            });
+
+            $('.dataTables_filter').remove()
+
+        });
+
+        $(function () {
+            $('#create-actor-form-groups').selectpicker();
+
+            let form = $("#create-actor-form");
+
+            let form_changing_content1 = `
+        <div class="create-actor-form__group">
+            <label class="create-actor-form__label" for="create-actor-form-first-name">First name</label>
+            <input class="form-control" type="text" id="create-actor-form-first-name" name="first_name" letterOnly>
+        </div>
+
+        <div class="create-actor-form__group">
+            <label class="create-actor-form__label" for="create-actor-form-last-name">Last name</label>
+            <input class="form-control" type="text" id="create-actor-form-last-name" name="last_name" letterOnly>
+        </div>
+
+        <div class="create-actor-form__group">
+            <label class="create-actor-form__label" for="create-actor-form-e-mail">E-mail</label>
+            <input class="form-control" type="email" id="create-actor-form-e-mail" name="email">
+        </div>
+
+        <div class="create-actor-form__group">
+            <label class="create-actor-form__label" for="create-actor-form-password">Password</label>
+            <input class="form-control" type="password" id="create-actor-form-password" name="password">
+        </div>
+
+        <div class="create-actor-form__group">
+            <label class="create-actor-form__label" for="create-actor-form-groups">Groups</label>
+            <select class="form-control" id="create-actor-form-groups" name="groups" multiple
+                    data-live-search="true">
+                {% for group in groups %}
+                    <option value="{{ group.uuid }}">{{ group.uinfo['group_name'] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    `;
+
+            let form_changing_content2 = `
+        <div class="create-actor-form__group">
+            <label class="create-actor-form__label" for="create-actor-form-group-name">Group name</label>
+            <input class="form-control" type="text" id="create-actor-form-group-name" name="group_name" letterOnly>
+        </div>
+
+        <div class="create-actor-form__group">
+            <label class="create-actor-form__label" for="create-actor-form-group-weight">Weight</label>
+            <input class="form-control" type="number" id="create-actor-form-group-weight" name="weight" letterOnly>
+        </div>
+
+        <div class="create-actor-form__group">
+            <label class="create-actor-form__label" for="create-actor-form-group-description">Description</label>
+            <textarea class="form-control" id="create-actor-form-group-description" name="description"></textarea>
+        </div>
+
+        <div class="create-actor-form__group">
+            <label class="create-actor-form__label" for="create-actor-form-groups">Users</label>
+            <select class="form-control" id="create-actor-form-groups" name="users" multiple
+                    data-live-search="true">
+                    {% for user in actors %}
+                        {% if user.actor_type in ['classic_user', 'user'] %}
+                                <option value="{{ user.uuid }}">{{ user.uinfo['first_name'] }}
+                {{ user.uinfo['last_name'] }}</option>
+                        {% endif %}
+                    {% endfor %}
+            </select>
+        </div>
+    `;
+
+            let select = $("#create-actor-form-actor-type");
+            let form_changing_content = document.querySelector('#create-actor-form__changing-content');
+
+            select.on('change', function (event) {
+                let selectValue = $(this).val();
+
+                if (selectValue == "create_user") {
+                    form.slideUp(function () {
+                        while (form_changing_content.firstChild) {
+                            form_changing_content.removeChild(form_changing_content.firstChild);
+                        }
+                        form_changing_content.innerHTML = form_changing_content1;
+                        $('#create-actor-form-groups').selectpicker();
+                    });
+
+                    form.slideDown();
+                }
+
+                if (selectValue == "create_group") {
+                    form.slideUp(function () {
+                        while (form_changing_content.firstChild) {
+                            form_changing_content.removeChild(form_changing_content.firstChild);
+                        }
+                        form_changing_content.innerHTML = form_changing_content2;
+                        $('#create-actor-form-groups').selectpicker();
+                    });
+
+                    form.slideDown();
+                }
+
+            })
+
+        })
+    </script>
+
+{% endblock %}

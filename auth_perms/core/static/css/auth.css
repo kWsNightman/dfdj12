@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Light.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/NoirPro-Light.woff') format('woff'),
+    url('../fonts/NoirPro-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/NoirPro-Regular.woff') format('woff'),
+    url('../fonts/NoirPro-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/NoirPro-Medium.woff') format('woff'),
+    url('../fonts/NoirPro-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NoirPro';
+    src: url('../fonts/NoirPro-SemiBold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/NoirPro-SemiBold.woff') format('woff'),
+    url('../fonts/NoirPro-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}

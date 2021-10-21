@@ -1,0 +1,148 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn i {
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+.btn-text-none {
+    padding: 0;
+    height: 36px;
+    width: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-text-none svg {
+    width: 22px;
+    height: 22px;
+}
+
+.btn-icon {
+    padding: 0;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table .btn-icon i {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+}
+
+/*Custom selectpicker*/
+.selectpicker + .dropdown-toggle[data-toggle="dropdown"] {
+    display: block;
+}
+
+.custom-control-label {
+    cursor: pointer;
+}
+
+.custom-switch .custom-control-label::before {
+    left: -2.55rem;
+    width: 35px;
+    height: 18px;
+    border-radius: 20px;
+}
+
+.custom-switch .custom-control-label::after {
+    top: 4px;
+    left: -22px;
+    width: 12px;
+    height: 12px;
+    background-color: #adb5bd;
+    border-radius: 50px;
+}
+
+.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+    left: -8px;
+    transition: all ease .2s;
+}
+
+.custom-switch .custom-control-label::after {
+    transition: all ease .2s;
+}
+
+.custom-control-label,
+.custom-control-label + .custom-control-descr {
+    padding-left: .75rem;
+}
+
+.custom-control-label::before,
+.custom-control-label::after {
+    width: 2rem;
+    height: 2rem;
+}
+
+.block-article-actions {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 50%;
+    z-index: 1;
+    transform: translateX(-50%);
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.03);
+}
+
+.block-article-actions > div {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    overflow: hidden;
+}
+
+.block-article-actions > div > a,
+.block-article-actions > div > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-weight: 400;
+    padding: 0 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.block-article-actions > div > a i,
+.block-article-actions > div > button i {
+    font-size: 24px;
+    margin-right: 7px;
+}
+
+.block-article-actions .create-article button,
+.block-article-actions .save-article button {
+    background: #27ae60;
+    color: #fff;
+}
+
+.block-article-actions .save-article-and-continue button{
+    color: #fff;
+    background: rgba(39, 174, 96,.75);
+}
+
+
+.block-article-actions .cancel-article a,
+.block-article-actions .cancel-article button {
+    background: #bdc3c7;
+    color: #242424;
+}
+
+.block-article-actions > div:first-child {
+    border-top-left-radius: 5px;
+}
+
+.block-article-actions > div:last-child {
+    border-top-right-radius: 5px;
+}

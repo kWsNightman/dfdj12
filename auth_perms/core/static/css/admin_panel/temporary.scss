@@ -1,0 +1,45 @@
+.create-actor-form__group {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.create-actor-form__label {
+  width: 20%;
+}
+
+.actor-table-wrapper {
+
+  width: 50%;
+  padding: 30px 30px;
+
+  &:first-child {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  &--compiled {
+    width: 100%;
+  }
+
+  @media (max-width: 1720px) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: none;
+    margin-bottom: 20px;
+    width: 100%;
+    padding-bottom: 15px;
+  }
+}
+
+.dataTable thead th {
+  font-weight: normal !important;
+}
+
+.dataTable tbody tr td {
+  padding: 10px 18px !important;
+}
+
+.actor-assigned-groups-wrapper {
+  margin: 3rem 0 !important;
+  border: 1px solid #0A8251 !important;
+}
+

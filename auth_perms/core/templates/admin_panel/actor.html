@@ -1,0 +1,566 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block content %}
+
+    <div class="dt-page__header">
+        <h1 class="dt-page__title">Actor</h1>
+    </div>
+
+    <div class="dt-card">
+
+        <div class="dt-card__body">
+
+            <div class="col-lg-12 mb-4 mt-4">
+                <div class="form-group">
+                    <b>UUID: </b>{{ actor.uuid }}
+                </div>
+                <form id="actor-form">
+
+                    {% if actor.actor_type in ['classic_user', 'user'] %}
+
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-first-name">First name</label>
+                                <input type="text" class="form-control" id="edit-actor-form-first-name"
+                                       name="first_name" value="{{ actor.uinfo['first_name'] }}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-last-name">Last name</label>
+                                <input type="text" class="form-control" id="edit-actor-form-last-name"
+                                       name="last_name" value="{{ actor.uinfo['last_name'] }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-e-mail">E-mail</label>
+                                <input type="e-mail" class="form-control" id="edit-actor-form-e-mail"
+                                       name="email" value="{{ actor.uinfo['email'] }}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-birthday">Birthday</label>
+                                <input type="date" class="form-control" id="edit-actor-form-birthday"
+                                       name="birthday">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-groups">Groups</label>
+                                <select class="form-control" id="edit-actor-form-groups" name="groups"
+                                        multiple
+                                        data-live-search="true">
+                                    {% for group in groups %}
+                                        {% if group['uuid'] in actor_groups %}
+                                            <option value="{{ group['uuid'] }}"
+                                                    selected>{{ group['uinfo']['group_name'] }}</option>
+                                        {% else %}
+                                            <option value="{{ group['uuid'] }}">{{ group['uinfo']['group_name'] }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-password">New password</label>
+                                <input type="password" class="form-control" id="edit-actor-form-password"
+                                       name="password">
+                            </div>
+                        </div>
+
+                    {% elif actor.actor_type == 'group' %}
+
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-group-name">Group name</label>
+                                <input type="text" class="form-control" id="edit-actor-form-group-name"
+                                       name="group_name" value="{{ actor.uinfo['group_name'] }}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-group-weight">Group weight</label>
+                                <input type="number" class="form-control" id="edit-actor-form-group-weight"
+                                       name="weight" value="{{ actor.uinfo['weight'] }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <label for="edit-actor-form-group-description">Description</label>
+                                <textarea class="form-control" rows="6" id="edit-actor-form-group-description"
+                                          name="group_description"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-12">
+                                <label for="edit-actor-form-users">Users</label>
+                                <select class="form-control" id="edit-actor-form-users" name="users"
+                                        multiple
+                                        data-live-search="true">
+                                    {% for user in actors %}
+                                        {% if user.actor_type in ['classic_user', 'user'] %}
+                                            {% if actor.uuid in user.uinfo['groups'] %}
+                                                <option value="{{ user.uuid }}"
+                                                        selected>{{ user.uinfo['first_name'] }} {{ user.uinfo['last_name'] }}</option>
+                                            {% else %}
+                                                <option value="{{ user.uuid }}">{{ user.uinfo['first_name'] }} {{ user.uinfo['last_name'] }}</option>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                    {% endif %}
+
+                </form>
+                <button id="update" onclick="update_actor()" class="btn btn-primary">Update actor</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dt-card">
+        <div class="dt-card__body">
+            <div class="row col-lg-12">
+                <div class="actor-table-wrapper">
+                    <div class="table-responsive">
+                        <h2>Available perms</h2>
+                        <button class="btn btn-success" onclick="add_perms()">Add perms</button>
+                        <table class="actor-available-perms display">
+                            <thead>
+                            <th></th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Default
+                            </th>
+                            <th>
+                                Reverse
+                            </th>
+                            </thead>
+                            <tbody>
+                            {% if perms['default'] is not none %}
+                                {% for perm in perms['default'] %}
+                                    <tr uuid="{{ perm.uuid }}" default_value="{{ perm.default_value }}">
+                                        <td></td>
+                                        {% if perm.default_value == 0 %}
+                                            <td style="color: red;">
+                                                {{ perm.description }}
+                                            </td>
+                                        {% elif perm.default_value == 1 %}
+                                            <td style="color: green;">
+                                                {{ perm.description }}
+                                            </td>
+                                        {% endif %}
+                                        <td>
+                                            {{ perm.perm_type }}
+                                        </td>
+                                        {% if perm.default_value == 1 %}
+                                            <td style="color: green">
+                                                allowed
+                                            </td>
+                                        {% elif perm.default_value == 0 %}
+                                            <td style="color: red">
+                                                denied
+                                            </td>
+                                        {% endif %}
+                                        <td>
+                                            {% if perm['perm_value'] == 1 %}
+                                                <input type="checkbox" checked>
+                                            {% else %}
+                                                <input type="checkbox">
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="actor-table-wrapper">
+                    <div class="table-responsive">
+                        <h2>Assigned perms</h2>
+
+                        <button class="btn btn-danger" onclick="remove_perms()">Remove perms</button>
+                        <button class="btn btn-primary float-right" onclick="update_perms()">Update perms</button>
+                        <table class="actor-assigned-perms display">
+                            <thead>
+                            <th></th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Default
+                            </th>
+                            <th>
+                                Reverse
+                            </th>
+                            </thead>
+                            <tbody>
+                            {% if perms['actor'] is not none %}
+                                {% for perm in perms['actor'] %}
+                                    <tr uuid="{{ perm.uuid }}" default_value="{{ perm.default_value }}">
+                                        <td></td>
+                                        {% if perm.perm_value == 0 %}
+                                            <td style="color: red;">
+                                                {{ perm.description }}
+                                            </td>
+                                        {% elif perm.perm_value == 1 %}
+                                            <td style="color: green;">
+                                                {{ perm.description }}
+                                            </td>
+                                        {% endif %}
+                                        <td>
+                                            {{ perm.perm_type }}
+                                        </td>
+                                        {% if perm.default_value == 1 %}
+                                            <td style="color: green">
+                                                allowed
+                                            </td>
+                                        {% elif perm.default_value == 0 %}
+                                            <td style="color: red">
+                                                denied
+                                            </td>
+                                        {% endif %}
+                                        <td>
+                                            {% if perm.perm_value != perm.default_value %}
+                                                <input type="checkbox" checked>
+                                            {% else %}
+                                                <input type="checkbox">
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+
+                        {% for uuid, value in actor_groups.items() %}
+                            <div class="actor-assigned-groups-wrapper">
+                                <h3 class="ml-4 mt-4"><a
+                                        href="{{ url_for('auth_submodule.admin_actor', uuid=uuid) }}">{{ value.uinfo['group_name'] }}</a>
+                                    Weight: {{ value.uinfo['weight'] }}
+                                </h3>
+                                <table class="actor-assigned-groups display">
+                                    <thead>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Type
+                                    </th>
+                                    <th>
+                                        Default
+                                    </th>
+                                    <th>
+                                        Reverse
+                                    </th>
+                                    </thead>
+                                    <tbody>
+                                    {% if value.uinfo['group_name'] == 'BAN' %}
+                                        <tr>
+                                            <td colspan="4" class="dataTables_empty">Actor is banned all
+                                                permissions
+                                                denied
+                                            </td>
+                                            <td style="display: none;"></td>
+                                            <td style="display: none;"></td>
+                                            <td style="display: none;"></td>
+                                        </tr>
+                                    {% elif value.uinfo['group_name'] == 'ADMIN' %}
+                                        <tr>
+                                            <td colspan="4" class="dataTables_empty">Actor is admin all
+                                                permissions
+                                                allowed
+                                            </td>
+                                            <td style="display: none;"></td>
+                                            <td style="display: none;"></td>
+                                            <td style="display: none;"></td>
+                                        </tr>
+                                    {% else %}
+                                        {% for perm in perms['groups'][uuid] %}
+
+                                            <tr>
+                                                {% if perm.perm_value == 0 %}
+                                                    <td style="color: red;">
+                                                        {{ perm.description }}
+                                                    </td>
+                                                {% elif perm.perm_value == 1 %}
+                                                    <td style="color: green;">
+                                                        {{ perm.description }}
+                                                    </td>
+                                                {% endif %}
+                                                <td>
+                                                    {{ perm.perm_type }}
+                                                </td>
+                                                {% if perm.default_value == 1 %}
+                                                    <td style="color: green">
+                                                        allowed
+                                                    </td>
+                                                {% elif perm.default_value == 0 %}
+                                                    <td style="color: red">
+                                                        denied
+                                                    </td>
+                                                {% endif %}
+                                                <td>
+                                                    {% if perm.perm_value != perm.default_value %}
+                                                        <input type="checkbox" checked
+                                                               onclick="return false;">
+                                                    {% else %}
+                                                        <input type="checkbox" onclick="return false;">
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="actor-table-wrapper actor-table-wrapper--compiled">
+                    <h2>Compiled perms</h2>
+
+                    <tr class="table-responsive">
+                        <table class="actor-compiled-perms display">
+                            <thead>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Value
+                            </th>
+                            <th>
+                                Group
+                            </th>
+                            </thead>
+                            <tbody>
+                            {% if actor.is_root %}
+                                <tr>
+                                    <td colspan="4" class="dataTables_empty">Actor is root all permissions allowed</td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                </tr>
+                            {% elif actor.is_banned %}
+                                <tr>
+                                    <td colspan="4" class="dataTables_empty">Actor is banned all permissions denied</td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                </tr>
+                            {% elif actor.is_admin %}
+                                <tr>
+                                    <td colspan="4" class="dataTables_empty">Actor is admin all permissions allowed</td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                </tr>
+                            {% else %}
+                                {% if perms['compiled'] is not none %}
+                                    {% for type in perms['compiled'] %}
+                                        {% if perms['compiled'][type] != none %}
+                                            {% for perm in perms['compiled'][type] %}
+                                                <tr>
+                                                    {% if type == 'priority' %}
+                                                        <td style="font-weight: 500">{{ perm.description }}</td>
+                                                    {% elif type == 'not_priority' %}
+                                                        <td>{{ perm.description }}</td>
+                                                    {% endif %}
+                                                    <td>{{ perm.perm_type }}</td>
+                                                    {% if perm.perm_value != None %}
+                                                        {% if perm.perm_value == 1 %}
+                                                            <td style="color: green">allowed</td>
+                                                        {% elif perm.perm_value == 0 %}
+                                                            <td style="color: red">denied</td>
+                                                        {% endif %}
+                                                    {% elif perm.default_value != None %}
+                                                        {% if perm.default_value == 1 %}
+                                                            <td style="color: green">allowed</td>
+                                                        {% elif perm.default_value == 0 %}
+                                                            <td style="color: red">denied</td>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {% if perm.actor_id == None %}
+                                                        <td>Service</td>
+                                                    {% elif perm.actor_id == actor.uuid %}
+                                                        <td>Personal</td>
+                                                    {% else %}
+                                                        <td>{{ actor_groups[perm.actor_id]['uinfo']['group_name'] }}, {{ actor_groups[perm.actor_id]['uinfo']['weight'] }}</td>
+                                                    {% endif %}
+                                                </tr>
+                                            {% endfor %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    {{ super() }}
+
+    <script>
+
+        function add_perms() {
+            let data = {'actor_uuid': '{{ actor.uuid }}', 'perms': []}
+            Array.from($('table.actor-available-perms > tbody > tr.selected')).forEach(
+                function (element) {
+                    if ($(element).find('input').is(':checked')) {
+                        perm_value = Math.abs($(element).attr('default_value') - 1)
+                    } else {
+                        perm_value = $(element).attr('default_value')
+                    }
+                    data['perms'].push({'uuid': $(element).attr('uuid'), 'value': perm_value})
+                }
+            )
+            fetch('{{ url_for('auth_submodule.admin_permissions') }}', {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (response.ok) {
+                    document.location.reload()
+                }
+            })
+        }
+
+        function remove_perms() {
+            let data = {'actor_uuid': '{{ actor.uuid }}', 'perms': []}
+            Array.from($('table.actor-assigned-perms > tbody > tr.selected')).forEach(
+                function (element) {
+                    data['perms'].push($(element).attr('uuid'))
+                }
+            )
+            fetch('{{ url_for('auth_submodule.admin_permissions') }}', {
+                method: "DELETE",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (response.ok) {
+                    document.location.reload()
+                }
+            })
+        }
+
+        function update_perms() {
+            let data = {'actor_uuid': '{{ actor.uuid }}', 'perms': []}
+            Array.from($('table.actor-assigned-perms > tbody > tr')).forEach(
+                function (element) {
+                    if ($(element).find('input').is(':checked')) {
+                        perm_value = Math.abs($(element).attr('default_value') - 1)
+                    } else {
+                        perm_value = $(element).attr('default_value')
+                    }
+                    data['perms'].push({'uuid': $(element).attr('uuid'), 'value': perm_value})
+                }
+            )
+            fetch('{{ url_for('auth_submodule.admin_permissions') }}', {
+                method: "PUT",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (response.ok) {
+                    document.location.reload()
+                }
+            })
+        }
+
+        function update_actor() {
+            if (['classic_user', 'user'].includes('{{ actor.actor_type }}')) {
+                let first_name = $('input[name="first_name"]').val()
+                let last_name = $('input[name="last_name"]').val()
+                let email = $('input[name="email"]').val()
+                let password = $('input[name="password"]').val()
+                let groups = $('select[name="groups"]').val()
+                data = {
+                    'first_name': first_name, 'last_name': last_name,
+                    'email': email, 'password': password, 'groups': groups
+                }
+            } else {
+                let group_name = $('input[name="group_name"]').val()
+                let weight = $('input[name="weight"]').val()
+                let description = $('textarea[name="description"]').val()
+                let users = $('select[name="users"]').val()
+                data = {
+                    'group_name': group_name, 'weight': weight,
+                    'description': description, 'users': users
+                }
+            }
+            fetch('{{ url_for('auth_submodule.admin_actor', uuid=actor.uuid) }}', {
+                method: "PUT",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (response.ok) {
+                    document.location.reload()
+                }
+            })
+        }
+
+        $(document).ready(function () {
+            $('.actor-available-perms').DataTable({
+                "searching": false,
+                "paging": false,
+                "info": false,
+                columnDefs: [{
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets: 0
+                }],
+                select: {
+                    style: 'multi+shift',
+                    selector: 'td:first-child'
+                },
+                order: [[1, 'asc']]
+            });
+
+            $('.actor-assigned-perms').DataTable({
+                "searching": false,
+                "paging": false,
+                "info": false,
+                columnDefs: [{
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets: 0
+                }],
+                select: {
+                    style: 'multi+shift',
+                    selector: 'td:first-child'
+                },
+                order: [[0, 'asc']]
+            });
+
+            $('.actor-compiled-perms').DataTable({
+                "searching": false,
+                "paging": false,
+                "info": false,
+            });
+
+            $('.actor-assigned-groups').DataTable({
+                "searching": false,
+                "paging": false,
+                "info": false,
+            })
+            $("#edit-actor-form-groups").selectpicker();
+            $("#edit-actor-form-users").selectpicker();
+        });
+
+    </script>
+
+{% endblock %}

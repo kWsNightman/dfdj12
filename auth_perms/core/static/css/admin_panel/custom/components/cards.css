@@ -1,0 +1,109 @@
+.dt-module, .dt-card {
+    border-radius: .5rem;
+}
+
+.dt-card-collapse {
+    width: 100%;
+}
+
+.dt-card-collapse .dt-card__header {
+    margin-bottom: 0;
+    padding-bottom: 2.75rem;
+    transition: all ease .2s;
+}
+
+.dt-card-collapse .dt-card__header:hover {
+    cursor: pointer;
+}
+
+.dt-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dt-card-collapse:hover .dt-brand__tool {
+    background-color: rgba(0, 0, 0, .1);
+    transition: all ease .2s;
+}
+
+.dt-card-collapse .collapse.show {
+    /* margin-top: -2.75rem; */
+}
+
+.dt-card__header {
+    margin-bottom: 2.75rem;
+    padding: 2.75rem 2.75rem 0;
+}
+
+.dt-entry__heading {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dt-card__body {
+    padding: 2.75rem 2.75rem;
+}
+
+.dt-card__title {
+    font-size: 1.75rem
+}
+
+.dt-card-collapse .dt-card__header {
+    margin-bottom: 0;
+    padding-bottom: 2.75rem;
+    transition: all ease .2s;
+    cursor: pointer;
+}
+
+.dt-card-collapse:hover .dt-card__header .dt-card__title {
+    color: #038fde;
+    transition: all ease .2s;
+}
+
+.dt-card-collapse:hover .dt-card__header .btn-primary {
+    background-color: #0277b8;
+    border-color: #026fac;
+}
+
+.dt-card__toggle {
+    display: inline-flex;
+    padding-left: 10px;
+    border-left: 1px solid #ccc;
+}
+
+.card-toggle__btn {
+    color: #fff;
+    padding: 0.68rem 1rem;
+    font-size: 1.35rem;
+}
+
+.dt-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dt-card__header {
+    margin-bottom: 2.75rem;
+    padding: 2.75rem 2.75rem 0;
+}
+
+.dt-entry__heading {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dt-card__body {
+    padding: 2.75rem 2.75rem;
+}
+
+.dt-card__title {
+    font-size: 1.75rem;
+    min-width: 350px;
+}
+

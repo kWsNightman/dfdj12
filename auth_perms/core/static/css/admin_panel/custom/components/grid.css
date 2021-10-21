@@ -1,0 +1,7 @@
+.dt-card .dt-card__body > .row {
+    margin-bottom: 30px;
+}
+
+.dt-card .dt-card__body > .row:last-child {
+    margin-bottom: 0;
+}

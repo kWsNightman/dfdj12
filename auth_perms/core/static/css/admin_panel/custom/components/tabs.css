@@ -1,0 +1,91 @@
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    border: none;
+}
+
+.tabs-container .tab-content {
+    border: none;
+    font-size: 16px;
+}
+
+.nav-tabs .nav-link.active {
+    border-bottom: 1px solid #038fde;
+    color: #038fde;
+}
+
+.nav-tabs .nav-link {
+    font-size: 16px;
+    font-weight: 400;
+    color: #495057;
+    border-bottom: 1px solid transparent;
+}
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    border: transparent;
+    border-bottom: 1px solid #038fde;
+}
+
+.tab-content {
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.nav-card-tabs.nav-tabs {
+    border-bottom: 0;
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+.nav-card-tabs.nav-tabs
+
+.nav-card-tabs.nav-tabs .nav-item .nav-link {
+    border: none;
+}
+
+.nav-card-tabs.nav-tabs .nav-link.active, .nav-card-tabs.nav-tabs .nav-item .nav-link {
+    font-size: 18px;
+    background: #fff;
+    margin-right: 12px;
+    box-shadow: 0 0 5px 5px rgba(0,0,0,0.03);
+    padding: 1.6rem 3.5rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    border: none;
+}
+
+.nav-card-tabs.nav-tabs .nav-item .nav-link i {
+    font-size: 24px;
+    margin-right: 7px;
+}
+
+.nav-card-tabs.nav-tabs .nav-link.active,
+.nav-card-tabs.nav-tabs .nav-item .nav-link:hover {
+    border: none;
+}
+
+.nav-card-tabs.nav-tabs + .tab-content {
+    padding: 30px 0 0;
+}
+
+/*Custom block actions only for tabs with actions (e.g. register-product template)*/
+.tab-content-actions .tab-pane .dt-card:not(.dt-card--sidebar) .dt-card__body {
+    padding-bottom: 110px;
+}
+
+.tab-content-actions .dt-card--actions {
+    transform: translateY(-100%);
+    margin-top: -30px;
+}
+
+.tab-content-actions .dt-card--actions {
+    box-shadow: none;
+    border-top: 1px solid #e8e8e8;
+}
+
+.tab-content-actions  .dt-card--actions .dt-card__body {
+    padding: 2.75rem!important;
+}

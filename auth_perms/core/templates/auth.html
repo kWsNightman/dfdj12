@@ -1,0 +1,447 @@
+<!-- Styles -->
+{{ scripts.get('css') | safe }}
+<style>
+    *,:after,:before{box-sizing:border-box}body,html{height:100%}body{font-family:NoirPro,sans-serif;font-weight:400;background:#f5f5f5;margin:0;color:#262626}.a-body{font-family:NoirPro,sans-serif;font-weight:400;background:#f5f5f5;margin:0;color:#262626}input{font-family:NoirPro,sans-serif;padding:0 12px;font-size:16px}input::placeholder{font-family:NoirPro,sans-serif;font-size:16px}h1,h2,h3,h4,h5{font-family:NoirPro,sans-serif;font-weight:500}.a-headbar{display:flex;align-items:center;justify-content:space-between;position:relative}.a-services{border-right:1px solid #eee}.a-services .a-dropdown-content{right:0;min-width:auto}.a-services .a-name-icon{display:flex;align-items:center}.a-services .a-dropdown-content .a-name-icon{width:auto;height:auto}.a-services .a-dropdown-content .a-icon{line-height:1;font-size:22px;margin-right:8px}.a-languages .a-dropdown-toggle .a-icon{margin-right:8px}.a-languages .a-dropdown-item-disabled{cursor:not-allowed}.a-languages .a-dropdown-content .a-dropdown-link{display:flex}.a-languages .a-dropdown-content .a-dropdown-link-disabled{opacity:.7}.a-languages .a-tooltip{margin:0;width:100%}.a-languages .a-tooltip .a-tooltiptext{top:0;left:100%;transform:translateX(0);bottom:auto;text-align:left}.a-languages .a-tooltip .a-tooltiptext span{display:block;margin-bottom:3px}.a-languages .a-dropdown-content .a-dropdown-link .a-name-icon{margin-right:8px}.a-dropdown{padding:0 10px;display:inline-block;transition:all ease .2s}.a-dropdown:hover{background:rgba(3,143,222,.05)}.a-dropdown-toggle{cursor:pointer;height:70px;display:flex;align-items:center;transition:all ease .2s;line-height:1}.a-dropdown-toggle:active,.a-dropdown-toggle:focus,.a-dropdown-toggle:hover{transition:all ease .2s;color:#038fde}.a-dropdown-toggle .a-icon-services{width:22px;height:22px;margin-right:5px; background-size:22px}.a-dropdown-toggle .a-icon-chevron{width:14px;height:14px}.a-dropdown-content{display:none;position:absolute;background-color:#fff;z-index:1;border-top:1px solid #eee}.a-dropdown:hover .a-dropdown-content{display:block}.a-dropdown-list{list-style:none;padding:0;margin:0}.a-dropdown-content .a-dropdown-item{transition:all ease .2s;border-left:3px solid transparent}.a-dropdown-content .a-dropdown-item:not(.a-dropdown-item-disabled):hover{border-left:3px solid #0080c8}.a-dropdown-content .a-dropdown-item:hover .a-text-link{text-decoration:underline}.a-dropdown-content .a-dropdown-item:not(:last-child){border-bottom:1px solid #eee}.a-dropdown-content .a-name{color:#212121}.a-dropdown-content .a-dropdown-link{padding:.75rem 1.15rem;color:#545454;text-decoration:none;font-size:14px;width:100%;display:flex;flex-direction:column}.a-dropdown-content .a-dropdown-link:hover{color:#262626}.a-dropdown-content .a-dropdown-link div:first-child{display:flex;align-items:center}.a-dropdown-content .a-dropdown-link .a-name-icon{width:22px;height:22px;margin-right:8px;background-size: 22px}@media all and (max-width:992px){.a-dropdown-content{right:0}}.a-main{margin-top:35px;margin-bottom:30px}.a-heading{text-align:center}.a-page-title{color:rgba(0,0,0,.9);margin-bottom:0;font-size:28px}.a-heading .a-page-subtitle{margin-top:10px;margin-bottom:25px;font-size:18px;color:rgba(0,0,0,.65)}.a-container{width:100%;max-width:580px;margin:auto;padding:0 15px}.a-top-line{display:flex;width:100%;height:70px;background:#fff;box-shadow:0 0 5px 5px rgba(0,0,0,.03)}.a-tabset{position:relative}.a-tabset>input[type=radio]{position:absolute;left:-200vw}.a-tabset .a-tab-panel{text-align:center;display:none}.a-tabset>input:first-child:checked~.a-tab-panels>.a-tab-panel:first-child,.a-tabset>input:nth-child(11):checked~.a-tab-panels>.a-tab-panel:nth-child(6),.a-tabset>input:nth-child(3):checked~.a-tab-panels>.a-tab-panel:nth-child(2),.a-tabset>input:nth-child(5):checked~.a-tab-panels>.a-tab-panel:nth-child(3),.a-tabset>input:nth-child(7):checked~.a-tab-panels>.a-tab-panel:nth-child(4),.a-tabset>input:nth-child(9):checked~.a-tab-panels>.a-tab-panel:nth-child(5){display:block}.a-tab-panels{padding:30px;background:#fff;border:1px solid #f8f8f8;border-radius:5px;box-shadow:0 0 5px 5px rgba(0,0,0,.03)}.a-tab-panel .a-tab-heading{margin-left:auto;margin-right:auto;max-width:75%;margin-top:0;margin-bottom:0;font-size:20px;font-weight:400}.a-tab-heading+form{margin-top:20px}.a-tab-panel .a-tab-heading+.a-qr{margin-top:0}.a-tabset #btnSignUp{position:absolute;top:0;right:0;background:#34c46f;color:#fff;margin-right:0}.a-tabset input#tabSignUp+label:hover,.a-tabset input:checked#tabSignUp+label{background:#22b45e;transition:all ease .2s}.a-tabset input#tabSignUp+label:hover svg,.a-tabset input:checked#tabSignUp+label svg{fill:#fff;transition:all ease .2s}.a-tabset>label{position:relative;background:#ddd;color:#242424;display:inline-flex;justify-content:center;align-items:center;border:none;cursor:pointer;transition:.3s;font-size:16px;border-radius:5px;text-decoration:none;transition:all ease .2s;height:46px;margin-right:8px}.a-tabset>label>div{display:flex;align-items:center;padding:12px 16px}.a-tabset>label svg{width:22px;height:22px;margin-right:5px}.a-tabset>input:focus+label,.a-tabset>label:hover{background:#038fde;color:#fff;transition:all ease .2s}.a-tabset>input:checked+label::after,.a-tabset>input:focus+label::after,.a-tabset>label:hover::after{color:#fff;background:#038fde}.a-tabset>input:checked+label{color:#fff;background:#038fde}.a-qr{position:relative}.a-qr img{max-width:420px;width:100%;position:relative}.a-qr-generate{display:flex;align-items:center;justify-content:center;color:#038fde;cursor:pointer;text-decoration:none;transition:all ease .2s}.a-qr-generate:hover{transition:all ease .2s}.a-qr-generate svg{width:20px;height:20px;margin-left:3px;transition:all ease .2s}.a-qr-generate:hover svg{transform:rotate(90deg);transition:all ease .2s}.a-btn{font-family:NoirPro,sans-serif;background:#ddd;color:#242424;display:flex;justify-content:center;align-items:center;border:none;outline:0;cursor:pointer;padding:12px 16px;transition:.3s;font-size:16px;border-radius:5px;text-decoration:none;transition:all ease .2s}.a-btn svg{width:22px;height:22px;color:#242424;margin-right:4px}.a-btn-primary{color:#fff;background:#038fde}.a-btn-primary:hover{background:#0080c8}.a-btn-primary svg{fill:#fff}.a-btn-outline-primary{color:#038fde;background:#fff;border:1px solid #038fde}.a-btn-outline-primary:hover{color:#fff;background:#038fde}.a-btn-outline-primary svg{fill:#038fde;transition:all ease .2s}.a-btn-outline-primary:hover svg{fill:#fff;transition:all ease .2s}.a-btn-secondary{color:#545454;background:#f5f5f5}.a-btn-secondary:hover{color:#262626;background:#f5f5f5}.a-btn-secondary svg{fill:#262626}#contentAuthSignIn .a-btn{width:100%}.a-collapse-open{display:none}.a-collapse-painel{visibility:hidden;max-height:0;opacity:0;transition:max-height .1s,visibility .3s,opacity .3s}.a-collapse-open:checked~.a-collapse-painel{max-height:100%;opacity:100;visibility:visible;margin-bottom:15px}.a-collapse-open~.a-collapse-btn:after{content:"‹";transform:rotate(-90deg);position:relative;left:5px;top:0}.a-collapse-open:checked~.a-collapse-btn:after{content:"›";transform:rotate(270deg)}.a-collapse-list .collapse-inner{padding:10px}.a-collapse-list .a-collapse-btn{position:absolute;top:0;right:0;background:#34c46f;color:#fff}.a-collapse-list .a-collapse-btn svg{fill:#fff!important}.a-collapse-list .a-collapse-btn:hover{background:#22b45e}.a-tab-panels .a-tabset>label{margin:0;max-width:49%;width:100%;background:0 0;border-radius:0;border-bottom:3px solid #eee;transition:all ease .2s;border-top-left-radius:4px;border-top-right-radius:4px}.a-tab-panels .a-tabset>label:hover{color:#038fde;transition:all ease .2s;border-color:#038fde}.a-tab-panels .a-tabset>label:hover svg{fill:#038fde;transition:all ease .2s}.a-tab-panels .a-tabset>label>div{background:0 0;padding:0}.a-tab-panels .a-tabset>input:checked+label{border-bottom:3px solid #038fde;color:#038fde;background:rgba(3,143,222,.05)}.a-tab-panels .a-tabset>input:checked+label svg{fill:#038fde}.a-tab-panels .a-tab-panels{margin-top:20px}.a-step:not(:last-child){margin-bottom:15px}.a-collapse-painel .a-heading{display:flex;align-items:center;text-align:left;margin-top:0;margin-bottom:5px;font-weight:400;font-size:18px;border-left:4px solid #038fde;padding-left:10px}.a-collapse-painel .a-heading~p{margin-top:0;color:#777;font-weight:400;margin-bottom:10px;font-size:14px;padding-left:15px}.a-apps{display:flex;align-items:center}.a-v-hr{height:100px;width:1px;background:#ccc;margin:0 20px;position:relative}.a-v-hr:before{position:absolute;top:50%;content:"OR";left:0;transform:translateY(-50%) translateX(-50%);background:#fff;padding:5px 0}.a-tooltip{position:relative;display:inline-flex;cursor:pointer;margin-left:5px;color:#038fde}.a-tooltip:hover{transition:all ease .2s;color:#038fde}.a-tooltip .a-tooltiptext{visibility:hidden;background-color:#262626;color:#fff;text-align:center;font-size:14px;padding:8px;border-radius:2px;position:absolute;z-index:1;min-width:160px;width:100%;max-width:220px;bottom:100%;left:50%;transform:translateX(-50%)}.a-tooltip .a-tooltiptext span{color:#038fde}.a-tooltip:hover .a-tooltiptext{visibility:visible}.a-link{color:#038fde}.a-column{display:flex;flex-wrap:wrap;justify-content:space-between}.a-column-2 .a-form-group{max-width:calc(50% - 10px);width:100%}.a-form-group{text-align:left;margin-bottom:20px;width:100%}.a-form-group label{margin-bottom:5px;display:flex;font-size:14px}.a-form-control{display:block;width:100%;height:42px;font-weight:400;line-height:1.3;color:#545454;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:3px}.a-hr{position:relative;margin:20px 0}.a-hr::before{content:"";position:absolute;z-index:0;top:50%;left:0;width:100%;background:#ced4da;height:1px;transform:translateY(-50%)}.a-hr-text{position:relative;z-index:10;text-transform:uppercase;background:#fff;display:inline-flex;padding:5px 10px;font-size:18px}.a-notify{position:relative;text-align:left;padding:15px 20px;background:#f0f8ff;border-radius:6px;font-size:14px;color:#545454}.a-notify:before{position:absolute;top:0;left:50%;transform:translateX(-50%) translateY(-100%);content:"";width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:10px solid #f0f8ff}.a-notify-body{display:inline-flex;line-height:1.5}.a-notify-body-icon{display:inline-flex}.a-icon-flag-cn {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+CjxwYXRoIGQ9Ik0wIDUuMzY0NDJlLTA3SDM2VjI0SDBWNS4zNjQ0MmUtMDdaIiBmaWxsPSIjREUyOTEwIi8+CjxwYXRoIGQ9Ik02LjAwMDAxIDIuNDAwMTJMOC4xMTYwMSA4LjkxMjZMMi41NzYxNyA0Ljg4NzY0SDkuNDIzNzdMMy44ODQwMSA4LjkxMjZMNi4wMDAwMSAyLjQwMDEyWiIgZmlsbD0iI0ZGREUwMCIvPgo8cGF0aCBkPSJNMTAuOTcxNyAzLjAxNzU4TDEyLjQ3MDIgMS4yOTU5TDEyLjI2OTggMy41Njk1OEwxMS4wOTU1IDEuNjEyMzhMMTMuMTk2IDIuNTA1NThMMTAuOTcxNyAzLjAxNzU4WiIgZmlsbD0iI0ZGREUwMCIvPgo8cGF0aCBkPSJNMTMuMjExOSA0Ljk2OTYyTDE1LjI2MTIgMy45NjQzM0wxNC4xOTQyIDUuOTgyMThMMTMuODcxNCAzLjcyMjU3TDE1LjQ2MDYgNS4zNjA5TDEzLjIxMTkgNC45Njk2MloiIGZpbGw9IiNGRkRFMDAiLz4KPHBhdGggZD0iTTEzLjI0NjEgOC4wNzAxNUwxNS41MjcxIDcuOTg4MzFMMTMuNzI5OSA5LjM5NTI2TDE0LjM1NjkgNy4yMDA1NUwxNS4xMzk2IDkuMzQ0N0wxMy4yNDYxIDguMDcwMTVaIiBmaWxsPSIjRkZERTAwIi8+CjxwYXRoIGQ9Ik0xMS4wNjI1IDEwLjA1MDRMMTMuMTk4MyAxMC44NTU3TDEwLjk5NzEgMTEuNDU5NUwxMi40MjI5IDkuNjc3MTlMMTIuMzE3IDExLjk1NzNMMTEuMDYyNSAxMC4wNTA0WiIgZmlsbD0iI0ZGREUwMCIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iMTIiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==")
+}
+
+.a-icon-flag-ru {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+CjxwYXRoIGQ9Ik0xMi4wMDA1IDI0QzE4LjYyNzYgMjQgMjQgMTguNjI3NiAyNCAxMi4wMDA1QzI0IDUuMzczMzMgMTguNjI3NiAwLjAwMDk3NjU2MiAxMi4wMDA1IDAuMDAwOTc2NTYyQzUuMzczMzMgMC4wMDA5NzY1NjIgMC4wMDA5NzY1NjIgNS4zNzMzMyAwLjAwMDk3NjU2MiAxMi4wMDA1QzAuMDAwOTc2NTYyIDE4LjYyNzYgNS4zNzMzMyAyNCAxMi4wMDA1IDI0WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTIzLjMxNDUgNy45OTkwMkgxNS45MjA5QzE2LjI0MjEgMTAuNTYyNCAxNi4yNDQgMTMuMzg2OSAxNS45MjcxIDE1Ljk1MzVIMjMuMzMwM0MyMy43NjI0IDE0LjcxNTMgMjQgMTMuMzg1NiAyNCAxMi4wMDAxQzI0LjAwMDIgMTAuNTk2NSAyMy43NTcxIDkuMjUwNSAyMy4zMTQ1IDcuOTk5MDJaIiBmaWxsPSIjMkI0NzlEIi8+CjxwYXRoIGQ9Ik0xNS45MjAyIDcuOTk5MDRIMjMuMzEzN0MyMy4zMTI2IDcuOTk1MjQgMjMuMzExNCA3Ljk5MjA1IDIzLjMwOTkgNy45ODg2QzIxLjc3NDIgMy42NTgyMyAxNy44MjM2IDAuNDcyMjM1IDEzLjA3NzEgMC4wNDkzMTY0QzE0LjkxNDEgMS4wNTYxNyAxNS40NTA3IDQuMjQ2MTggMTUuOTIwMiA3Ljk5OTA0WiIgZmlsbD0iI0VGRUNFQyIvPgo8cGF0aCBkPSJNMTMuMDc3MSAyMy45NTA0QzE3LjgzMjIgMjMuNTI2NyAyMS43ODgyIDIwLjMyOTcgMjMuMzE4IDE1Ljk4NzdDMjMuMzIyIDE1Ljk3NjIgMjMuMzI1NCAxNS45NjQ4IDIzLjMyOTUgMTUuOTUzNkgxNS45MjYzQzE1LjQ2MDMgMTkuNzI2OCAxNC45MjE1IDIyLjkzOTMgMTMuMDc3MSAyMy45NTA0WiIgZmlsbD0iI0U2MzAyNiIvPgo8cGF0aCBkPSJNMCAxMS45OTk5QzAgMTMuMzg1NiAwLjIzNzk4MyAxNC43MTUxIDAuNjY5NzY5IDE1Ljk1MzNIMTYuNTQ0NEMxNi44NjE2IDEzLjM4NjUgMTYuODU5MyAxMC41NjIyIDE2LjUzODYgNy45OTg3OEgwLjY4NTcyOUMwLjI0MzEwMSA5LjI1MDMxIDAgMTAuNTk2MyAwIDExLjk5OTlaIiBmaWxsPSIjMzc1N0E2Ii8+CjxwYXRoIGQ9Ik0wLjY4OTM0NyA3Ljk4ODUzQzAuNjg4MjMyIDcuOTkxOTMgMC42ODcwNjcgNy45OTUxNyAwLjY4NTU0NyA3Ljk5ODk3SDE2LjUzODRDMTYuMDY4NSA0LjI0NjA2IDE0LjkxNDIgMS4wNTYxMSAxMy4wNzc1IDAuMDQ5MjQ4NEMxMi43MjIyIDAuMDE3Nzg0MiAxMi4zNjMgNS43NzQ5NmUtMTAgMTEuOTk5NiA1Ljc3NDk2ZS0xMEM2Ljc3OTQzIC01LjA2NjY1ZS0wNSAyLjM0MDIzIDMuMzMzOSAwLjY4OTM0NyA3Ljk4ODUzWiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNMTYuNTQ0NiAxNS45NTM0SDAuNjY5OTIyQzAuNjczOTI1IDE1Ljk2NDYgMC42Nzc2NzQgMTUuOTc1OSAwLjY4MTQ3NCAxNS45ODc1QzIuMzI1NzcgMjAuNjU0IDYuNzcxMzYgMjMuOTk5OCAxMS45OTk5IDIzLjk5OThDMTIuMzYzMyAyMy45OTk4IDEyLjcyMjYgMjMuOTgxOSAxMy4wNzc4IDIzLjk1MDFDMTQuOTIyMyAyMi45MzkxIDE2LjA3ODcgMTkuNzI2NiAxNi41NDQ2IDE1Ljk1MzRaIiBmaWxsPSIjRTczQjM2Ii8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDAiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==")
+}
+
+.a-icon-flag-en {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGcgY2xpcC1wYXRoPSJ1cmwoI2NsaXAwKSI+CjxwYXRoIGQ9Ik0yMy45NDc0IDEzLjEyMjNIMC4wNTQ2ODc1VjEzLjEyMjdIMjMuOTQ3NFYxMy4xMjIzWiIgZmlsbD0iI0M0MjEyNiIvPgo8cGF0aCBkPSJNMjIuNzAxOCA2LjU3MTUzSDEuMjk4ODNWNi41NzE4OUgyMi43MDE4VjYuNTcxNTNaIiBmaWxsPSIjQzQyMTI2Ii8+CjxwYXRoIGQ9Ik0yMy41NTI2IDguNzU0ODhIMC40NDgyNDJWOC43NTUyNEgyMy41NTI2VjguNzU0ODhaIiBmaWxsPSIjQzQyMTI2Ii8+CjxwYXRoIGQ9Ik01LjE1Nzk5IDIxLjg1NkgxOC44NDNMMTguODQzNyAyMS44NTUySDUuMTU3MjNMNS4xNTc5OSAyMS44NTZaIiBmaWxsPSIjQzQyMTI2Ii8+CjxwYXRoIGQ9Ik0xMi4wMDA1IDBDMTEuNzY0OCAwIDExLjUzMDkgMC4wMDg1MTIxMyAxMS4yOTg4IDAuMDIxNzg3SDEyLjcwMjNDMTIuNDY5OSAwLjAwODUxMjEzIDEyLjIzNjIgMCAxMi4wMDA1IDBaIiBmaWxsPSIjQzQyMTI2Ii8+CjxwYXRoIGQ9Ik0yMy45NTAxIDEwLjkzODdIMC4wNDk4MDQ3VjEwLjkzOTFIMjMuOTUwMVYxMC45Mzg3WiIgZmlsbD0iI0M0MjEyNiIvPgo8cGF0aCBkPSJNMTUuNTQ2NyA0LjM4ODI4SDIxLjI3NjdDMjAuNTk2MSAzLjU1OTcxIDE5LjgwNTEgMi44MjYyNSAxOC45Mjg4IDIuMjA1MzJIMTQuNjI2QzE0Ljk4MiAyLjgzMTcyIDE1LjI4ODIgMy41NzA4NiAxNS41NDY3IDQuMzg4MjhaIiBmaWxsPSIjRTdFN0U3Ii8+CjxwYXRoIGQ9Ik0xNC42MjU4IDIuMjA1NDlIMTguOTI4NkMxNy4xNDk4IDAuOTQ0OTMxIDE1LjAxNDIgMC4xNTU1MzIgMTIuNzAxNSAwLjAyMTk3MjdIMTIuMzMyQzEzLjQyMDYgMC4xNTg5NzcgMTMuOTIwNiAwLjk2NDU5IDE0LjYyNTggMi4yMDU0OVoiIGZpbGw9IiNEQzMwMjciLz4KPHBhdGggZD0iTTIzLjU1MTggOC43NTQ5OEMyMy4zMzg0IDcuOTk0MDUgMjMuMDUyMyA3LjI2Mzk5IDIyLjcwMDYgNi41NzIwMkgxNi4xMDg0QzE2LjI0MiA3LjI3MjkgMTYuMzQ3MyA4LjAwNSAxNi40MjU0IDguNzU0OThIMjMuNTUxOFoiIGZpbGw9IiNFN0U3RTciLz4KPHBhdGggZD0iTTE1LjczODMgNi41NzE3NEgyMi43MDExQzIyLjMwNDMgNS43OTEzMSAyMS44Mjc3IDUuMDU4OTYgMjEuMjc2NyA0LjM4ODQzSDE1LjE5NDNDMTUuNDA4OCA1LjA2NzMyIDE1LjU5MDkgNS43OTk2NyAxNS43MzgzIDYuNTcxNzRaIiBmaWxsPSIjREMzMDI3Ii8+CjxwYXRoIGQ9Ik0xNi42Nzg3IDEzLjEyMThIMjMuOTQ2QzIzLjk4MDUgMTIuNzUyNiAyNCAxMi4zNzgzIDI0IDEyLjAwMDJDMjQgMTEuNjQyMiAyMy45ODEzIDExLjI4ODkgMjMuOTUwNiAxMC45Mzg3SDE2LjY4MDRDMTYuNzA0MSAxMS42NjQ4IDE2LjcwMzcgMTIuMzk2MiAxNi42Nzg3IDEzLjEyMThaIiBmaWxsPSIjRTdFN0U3Ii8+CjxwYXRoIGQ9Ik0yMy45NTA3IDEwLjkzODNDMjMuODg1IDEwLjE4ODYgMjMuNzQ5OSA5LjQ1OTA5IDIzLjU1MjYgOC43NTUzN0gxNi4xMjAxQzE2LjE5NDggOS40NzAyNCAxNi4yNDQxIDEwLjIwMTYgMTYuMjY4MSAxMC45MzgzSDIzLjk1MDdaIiBmaWxsPSIjREMzMDI3Ii8+CjxwYXRoIGQ9Ik0xNS45ODQ0IDE3LjQ4ODdIMjIuNjcwNkMyMy4wMjcyIDE2Ljc5NzUgMjMuMzE3OCAxNi4wNjY5IDIzLjUzNTcgMTUuMzA1NEgxNi4zMDc2QzE2LjIyOCAxNi4wNTY1IDE2LjEyIDE2Ljc4ODUgMTUuOTg0NCAxNy40ODg3WiIgZmlsbD0iI0U3RTdFNyIvPgo8cGF0aCBkPSJNMjMuNTM1NSAxNS4zMDUzQzIzLjczNjkgMTQuNjAxOCAyMy44NzY3IDEzLjg3MjMgMjMuOTQ2MiAxMy4xMjIzSDE2LjQ1MjNDMTYuNDI2NyAxMy44NTk2IDE2LjM3NiAxNC41OTA4IDE2LjI5OTggMTUuMzA1M0gyMy41MzU1WiIgZmlsbD0iI0RDMzAyNyIvPgo8cGF0aCBkPSJNMTguODQyOSAyMS44NTUxQzE5LjczMTkgMjEuMjM2NiAyMC41MzQxIDIwLjUwMjQgMjEuMjI1NiAxOS42NzIxSDE1LjU5NTNDMTUuMzMyMiAyMC40OTI5IDE1LjAxOTcgMjEuMjMwOSAxNC42NTcyIDIxLjg1NTFIMTguODQyOVoiIGZpbGw9IiNFN0U3RTciLz4KPHBhdGggZD0iTTE1LjM4MzggMTkuNjcyMUgyMS4yMjU4QzIxLjc4MzMgMTkuMDAyMyAyMi4yNjcyIDE4LjI3IDIyLjY2OTggMTcuNDg4OEgxNS45MzQ2QzE1Ljc4NTEgMTguMjYxNCAxNS42MDEyIDE4Ljk5NDEgMTUuMzgzOCAxOS42NzIxWiIgZmlsbD0iI0RDMzAyNyIvPgo8cGF0aCBkPSJNMTEuNTY0OSAyMy45OTE0QzExLjU0MDcgMjMuOTkwNiAxMS41MTY1IDIzLjk4OTUgMTEuNDkyMiAyMy45ODg4QzExLjUxNjUgMjMuOTg5NSAxMS41NDA3IDIzLjk5MDYgMTEuNTY0OSAyMy45OTE0WiIgZmlsbD0iI0RDMzAyNyIvPgo8cGF0aCBkPSJNMTIgMjQuMDAwMUMxNC41NDQxIDI0LjAwMDEgMTYuOTAxMyAyMy4yMDU5IDE4Ljg0MjcgMjEuODU2SDE0LjQ5OTdDMTMuNzI4OSAyMy4xODQgMTMuMjIwNCAyNC4wMDAxIDEyIDI0LjAwMDFaIiBmaWxsPSIjREMzMDI3Ii8+CjxwYXRoIGQ9Ik0xMi4wMDAzIDIzLjk5OTlDMTEuODU0NSAyMy45OTk5IDExLjcwOTggMjMuOTk2NiAxMS41NjU0IDIzLjk5MTVDMTEuNzExMyAyMy45OTY0IDExLjg1NjIgMjMuOTk5OSAxMi4wMDAzIDIzLjk5OTlaIiBmaWxsPSIjQzQyMTI2Ii8+CjxwYXRoIGQ9Ik0xNS4wMjM4IDIuMjA1MzJINS4wNzE4MkM0LjE5NTMyIDIuODI2MjUgMy40MDQ0NSAzLjU1OTY2IDIuNzIzNjMgNC4zODgyOEgxNS45NDQyQzE1LjY4NTggMy41NzA4NiAxNS4zNzk4IDIuODMxNzIgMTUuMDIzOCAyLjIwNTMyWiIgZmlsbD0iI0YzRjRGNSIvPgo8cGF0aCBkPSJNNS4wNzEyOSAyLjIwNTQ5SDE1LjAyMzJDMTQuMzE3OCAwLjk2NDU5IDEzLjQyMDcgMC4xNTg5NzcgMTIuMzMyMSAwLjAyMTk3MjdIMTEuMjk4MkM4Ljk4NTQ1IDAuMTU1NTMyIDYuODQ5ODcgMC45NDQ5MzEgNS4wNzEyOSAyLjIwNTQ5WiIgZmlsbD0iI0U3MzYyNSIvPgo8cGF0aCBkPSJNMC40NDcyNjYgOC43NTQ5OEgxNi44MDQyQzE2LjcyNjIgOC4wMDQ4NSAxNi42MjA4IDcuMjcyOSAxNi40ODczIDYuNTcyMDJIMS4yOTgzOEMwLjk0NjY5NSA3LjI2NDA0IDAuNjYwNjI2IDcuOTk0MDUgMC40NDcyNjYgOC43NTQ5OFoiIGZpbGw9IiNGM0Y0RjUiLz4KPHBhdGggZD0iTTIuNzIzMDkgNC4zODg0M0MyLjE3MjQ5IDUuMDU4OTYgMS42OTU0IDUuNzkxMjUgMS4yOTg4MyA2LjU3MTczSDE2LjQ4NzVDMTYuMzQwMyA1Ljc5OTgxIDE2LjE1ODIgNS4wNjc1MiAxNS45NDM3IDQuMzg4NDNDMTUuOTQzNyA0LjM4ODQzIDIuNzIzMDkgNC4zODg0MyAyLjcyMzA5IDQuMzg4NDNaIiBmaWxsPSIjRTczNjI1Ii8+CjxwYXRoIGQ9Ik0wIDEyLjAwMDJDMCAxMi4zNzg0IDAuMDE5NzA5NiAxMi43NTI3IDAuMDU0MDExNSAxMy4xMjE5SDE2Ljk1MTFDMTYuOTc2MiAxMi4zOTYyIDE2Ljk3NjUgMTEuNjY1IDE2Ljk1MjkgMTAuOTM5SDAuMDQ5NDUxNEMwLjAxODc0NyAxMS4yODkgMCAxMS42NDIzIDAgMTIuMDAwMloiIGZpbGw9IiNGM0Y0RjUiLz4KPHBhdGggZD0iTTAuMDQ5ODA0NyAxMC45MzgzSDE2Ljk1M0MxNi45MjkgMTAuMjAxNSAxNi44Nzk1IDkuNDcwMjkgMTYuODA1IDguNzU1MzdIMC40NDc2OTZDMC4yNTA0NDggOS40NTkyNCAwLjExNTM2OCAxMC4xODg2IDAuMDQ5ODA0NyAxMC45MzgzWiIgZmlsbD0iI0U3MzYyNSIvPgo8cGF0aCBkPSJNMTYuNzk4NyAxNS4zMDUySDAuNDY0ODQ0QzAuNjgyNzY0IDE2LjA2NjkgMC45NzM1OTUgMTYuNzk3MyAxLjMyOTk5IDE3LjQ4ODVIMTYuNDc1NEMxNi42MTExIDE2Ljc4ODQgMTYuNzE4OSAxNi4wNTY0IDE2Ljc5ODcgMTUuMzA1MloiIGZpbGw9IiNGM0Y0RjUiLz4KPHBhdGggZD0iTTAuNDY0NDcyIDE1LjMwNTNIMTYuNzk4M0MxNi44NzQzIDE0LjU5MDggMTYuOTI1MyAxMy44NTk0IDE2Ljk1MDggMTMuMTIyM0gwLjA1MzcxMDlDMC4xMjMyMjcgMTMuODcyNCAwLjI2MzI3MSAxNC42MDE4IDAuNDY0NDcyIDE1LjMwNTNaIiBmaWxsPSIjRTczNjI1Ii8+CjxwYXRoIGQ9Ik01LjE1NzA1IDIxLjg1NTFIMTQuOTg3QzE1LjM0OTUgMjEuMjMwOCAxNS42NjIxIDIwLjQ5MjkgMTUuOTI1MSAxOS42NzIxSDIuNzc0NDFDMy40NjU4MiAyMC41MDI0IDQuMjY3ODQgMjEuMjM2NiA1LjE1NzA1IDIxLjg1NTFaIiBmaWxsPSIjRjNGNEY1Ii8+CjxwYXRoIGQ9Ik0xLjMzMDA4IDE3LjQ4ODhDMS43MzI3MyAxOC4yNyAyLjIxNjYxIDE5LjAwMjMgMi43NzQwNSAxOS42NzIxSDE1LjkyNDdDMTYuMTQxOSAxOC45OTQyIDE2LjMyNTkgMTguMjYxNCAxNi40NzUzIDE3LjQ4ODhIMS4zMzAwOFoiIGZpbGw9IiNFNzM2MjUiLz4KPHBhdGggZD0iTTExLjQ5MTkgMjMuOTg4OUMxMS41MTYyIDIzLjk4OTcgMTEuNTQwNCAyMy45OTA4IDExLjU2NDcgMjMuOTkxNUMxMS43MDkxIDIzLjk5NjcgMTEuODUzOCAyNC4wMDAxIDExLjk5OTUgMjQuMDAwMUMxMy4yMTk5IDI0LjAwMDEgMTQuMjE1IDIzLjE4NCAxNC45ODYgMjEuODU2SDUuMTU3MjNDNi45Njg0NCAyMy4xMTU3IDkuMTQyNDcgMjMuODkxIDExLjQ5MTkgMjMuOTg4OVoiIGZpbGw9IiNFNzM2MjUiLz4KPHBhdGggZD0iTTExLjc1MTYgMC4wMDYxMDM1MkM1LjYwMjIxIDAuMTMxMjAxIDAuNTkwMTg3IDQuODc5MiAwLjA1MDc4MTIgMTAuOTE4N0gxMS43NTE4VjAuMDA2MTAzNTJIMTEuNzUxNloiIGZpbGw9IiMyODM5OTEiLz4KPHBhdGggZD0iTTIuNDAxMTQgNi43OTg4M0wyLjU4Mzk1IDcuMzYxNzRIMy4xNzYyNUwyLjY5NzA5IDcuNzA5ODNMMi44ODAxIDguMjczMTVMMi40MDExNCA3LjkyNDg2TDEuOTIyMzMgOC4yNzMxNUwyLjEwNDk5IDcuNzA5ODNMMS42MjU5OCA3LjM2MTc0SDIuMjE4MjhMMi40MDExNCA2Ljc5ODgzWiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNMi40MDExNCA4Ljc4NzZMMi41ODM5NSA5LjM1MDg3SDMuMTc2MjVMMi42OTcwOSA5LjY5ODk1TDIuODgwMSAxMC4yNjIzTDIuNDAxMTQgOS45MTM5OUwxLjkyMjMzIDEwLjI2MjNMMi4xMDQ5OSA5LjY5ODk1TDEuNjI1OTggOS4zNTA4N0gyLjIxODI4TDIuNDAxMTQgOC43ODc2WiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNNC4zOTA2IDMuODE0OTRMNC41NzM0NiA0LjM3ODA2SDUuMTY1NTZMNC42ODY1NSA0LjcyNjM1TDQuODY5NDEgNS4yODkyNkw0LjM5MDYgNC45NDEzOEwzLjkxMTU5IDUuMjg5MjZMNC4wOTQ0NSA0LjcyNjM1TDMuNjE1MjMgNC4zNzgwNkg0LjIwNzU0TDQuMzkwNiAzLjgxNDk0WiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNNC4zOTA2IDUuODAzOTZMNC41NzM0NiA2LjM2NzA3SDUuMTY1NTZMNC42ODY1NSA2LjcxNDk2TDQuODY5NDEgNy4yNzgyOEw0LjM5MDYgNi45MzAzOUwzLjkxMTU5IDcuMjc4MjhMNC4wOTQ0NSA2LjcxNDk2TDMuNjE1MjMgNi4zNjcwN0g0LjIwNzU0TDQuMzkwNiA1LjgwMzk2WiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNNC4zOTA2IDcuNzkzMjFMNC41NzM0NiA4LjM1NjUzSDUuMTY1NTZMNC42ODY1NSA4LjcwNDIxTDQuODY5NDEgOS4yNjc1M0w0LjM5MDYgOC45MTkzTDMuOTExNTkgOS4yNjc1M0w0LjA5NDQ1IDguNzA0MjFMMy42MTUyMyA4LjM1NjUzSDQuMjA3NTRMNC4zOTA2IDcuNzkzMjFaIiBmaWxsPSIjRUZFRkVGIi8+CjxwYXRoIGQ9Ik0wLjg5MTQxNCA5LjI2NzcyTDAuNzA4NDAzIDguNzA0NEwxLjE4NzQxIDguMzU2NTJIMC41OTU0NjVMMC41ODIxOSA4LjMxNTQzQzAuNTE3MTg0IDguNTE2NDggMC40NTg0NiA4LjcxOTk2IDAuNDA0Mjk3IDguOTI1NzJMMC40MTI2NTcgOC45MTk0OUwwLjg5MTQxNCA5LjI2NzcyWiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNMS45MjI1MSA2LjI4NDA0TDIuNDAxMzEgNS45MzU4TDIuODgwMzIgNi4yODQwNEwyLjY5NzMxIDUuNzIwNzJMMy4xNzYzMiA1LjM3MjQ4SDIuNTg0MDJMMi40MDExNiA0LjgwOTU3TDIuMjE4MyA1LjM3MjQ4SDIuMDAwMDNDMS45NTk1IDUuNDMzODkgMS45MjAyOCA1LjQ5NTY1IDEuODgwODYgNS41NTc5OEwyLjEwNTIxIDUuNzIwNzJMMS45MjI1MSA2LjI4NDA0WiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNNC4zOTA1NSAyLjk1MjQzTDQuODY5MzYgMy4zMDAzMUw0LjY4NjUgMi43Mzc0TDUuMTY1MyAyLjM4OTE2SDQuODIzM0M0LjUzMjgyIDIuNjA2MzIgNC4yNTI1OCAyLjgzNjE1IDMuOTgzMzMgMy4wNzg2NEwzLjkxMTEzIDMuMzAwMzFMNC4zOTA1NSAyLjk1MjQzWiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNNS45MDAzOSAyLjMwNTg1TDYuMzc5NCAxLjk1NzYxTDYuODU4MiAyLjMwNTg1TDYuNjc1MzQgMS43NDI1M0w3LjE1NDE1IDEuMzk0NjVINi41NjIwNUw2LjUzNzIzIDEuMzE4ODVDNi4zMzY1OCAxLjQyMTM1IDYuMTM4MDIgMS41MjggNS45NDM5NiAxLjY0MTVMNi4wODMwNSAxLjc0MjQ4TDUuOTAwMzkgMi4zMDU4NVoiIGZpbGw9IiNFRkVGRUYiLz4KPHBhdGggZD0iTTYuMzc5OCAyLjgyMDU2TDYuNTYyNjYgMy4zODMzMkg3LjE1NDc2TDYuNjc1NzUgMy43MzE1Nkw2Ljg1ODYxIDQuMjk0ODhMNi4zNzk4IDMuOTQ2NTlMNS45MDA3OSA0LjI5NDg4TDYuMDgzNjUgMy43MzE1Nkw1LjYwNDQ5IDMuMzgzMzJINi4xOTY3NEw2LjM3OTggMi44MjA1NloiIGZpbGw9IiNFRkVGRUYiLz4KPHBhdGggZD0iTTYuMzc5OCA0LjgwOTU3TDYuNTYyNjYgNS4zNzIzM0g3LjE1NDc2TDYuNjc1NzUgNS43MjA1N0w2Ljg1ODYxIDYuMjgzODlMNi4zNzk4IDUuOTM1Nkw1LjkwMDc5IDYuMjgzODlMNi4wODM2NSA1LjcyMDU3TDUuNjA0NDkgNS4zNzIzM0g2LjE5Njc0TDYuMzc5OCA0LjgwOTU3WiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNNi4zNzk4IDYuNzk4ODNMNi41NjI2NiA3LjM2MTc0SDcuMTU0NzZMNi42NzU3NSA3LjcwOTgzTDYuODU4NjEgOC4yNzMxNUw2LjM3OTggNy45MjQ4Nkw1LjkwMDc5IDguMjczMTVMNi4wODM2NSA3LjcwOTgzTDUuNjA0NDkgNy4zNjE3NEg2LjE5Njc0TDYuMzc5OCA2Ljc5ODgzWiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNNi4zNzk4IDguNzg3Nkw2LjU2MjY2IDkuMzUwODdINy4xNTQ3Nkw2LjY3NTc1IDkuNjk4OTVMNi44NTg2MSAxMC4yNjIzTDYuMzc5OCA5LjkxMzk5TDUuOTAwNzkgMTAuMjYyM0w2LjA4MzY1IDkuNjk4OTVMNS42MDQ0OSA5LjM1MDg3SDYuMTk2NzRMNi4zNzk4IDguNzg3NloiIGZpbGw9IiNFRkVGRUYiLz4KPHBhdGggZD0iTTguMzY5MDYgMS44MjU5M0w4LjU1MTkyIDIuMzg5MDVIOS4xNDQwMkw4LjY2NTIxIDIuNzM3MzRMOC44NDc4NyAzLjMwMDI1TDguMzY5MDYgMi45NTIzN0w3Ljg4OTkgMy4zMDAyNUw4LjA3MjkxIDIuNzM3MzRMNy41OTM3NSAyLjM4OTA1SDguMTg2TDguMzY5MDYgMS44MjU5M1oiIGZpbGw9IiNFRkVGRUYiLz4KPHBhdGggZD0iTTguMzY5MDYgMy44MTQ5NEw4LjU1MTkyIDQuMzc4MDZIOS4xNDQwMkw4LjY2NTIxIDQuNzI2MzVMOC44NDc4NyA1LjI4OTI2TDguMzY5MDYgNC45NDEzOEw3Ljg4OTkgNS4yODkyNkw4LjA3MjkxIDQuNzI2MzVMNy41OTM3NSA0LjM3ODA2SDguMTg2TDguMzY5MDYgMy44MTQ5NFoiIGZpbGw9IiNFRkVGRUYiLz4KPHBhdGggZD0iTTguMzY5MDYgNS44MDM5Nkw4LjU1MTkyIDYuMzY3MDdIOS4xNDQwMkw4LjY2NTIxIDYuNzE0OTZMOC44NDc4NyA3LjI3ODI4TDguMzY5MDYgNi45MzAzOUw3Ljg4OTkgNy4yNzgyOEw4LjA3MjkxIDYuNzE0OTZMNy41OTM3NSA2LjM2NzA3SDguMTg2TDguMzY5MDYgNS44MDM5NloiIGZpbGw9IiNFRkVGRUYiLz4KPHBhdGggZD0iTTguMzY5MDYgNy43OTMyMUw4LjU1MTkyIDguMzU2NTNIOS4xNDQwMkw4LjY2NTIxIDguNzA0MjFMOC44NDc4NyA5LjI2NzUzTDguMzY5MDYgOC45MTkzTDcuODg5OSA5LjI2NzUzTDguMDcyOTEgOC43MDQyMUw3LjU5Mzc1IDguMzU2NTNIOC4xODZMOC4zNjkwNiA3Ljc5MzIxWiIgZmlsbD0iI0VGRUZFRiIvPgo8cGF0aCBkPSJNMTAuMzU3MyAwLjgzMTU0M0wxMC41NDAyIDEuMzk0NjZIMTEuMTMyM0wxMC42NTMzIDEuNzQyNTRMMTAuODM2MiAyLjMwNTg3TDEwLjM1NzMgMS45NTc1OEw5Ljg3ODE4IDIuMzA1ODdMMTAuMDYxMiAxLjc0MjU0TDkuNTgyMDMgMS4zOTQ2NkgxMC4xNzQxTDEwLjM1NzMgMC44MzE1NDNaIiBmaWxsPSIjRUZFRkVGIi8+CjxwYXRoIGQ9Ik0xMC4zNTczIDIuODIwNTZMMTAuNTQwMiAzLjM4MzMySDExLjEzMjNMMTAuNjUzMyAzLjczMTU2TDEwLjgzNjIgNC4yOTQ4OEwxMC4zNTczIDMuOTQ2NTlMOS44NzgxOCA0LjI5NDg4TDEwLjA2MTIgMy43MzE1Nkw5LjU4MjAzIDMuMzgzMzJIMTAuMTc0MUwxMC4zNTczIDIuODIwNTZaIiBmaWxsPSIjRUZFRkVGIi8+CjxwYXRoIGQ9Ik0xMC4zNTczIDQuODA5NTdMMTAuNTQwMiA1LjM3MjMzSDExLjEzMjNMMTAuNjUzMyA1LjcyMDU3TDEwLjgzNjIgNi4yODM4OUwxMC4zNTczIDUuOTM1Nkw5Ljg3ODE4IDYuMjgzODlMMTAuMDYxMiA1LjcyMDU3TDkuNTgyMDMgNS4zNzIzM0gxMC4xNzQxTDEwLjM1NzMgNC44MDk1N1oiIGZpbGw9IiNFRkVGRUYiLz4KPHBhdGggZD0iTTEwLjM1NzMgNi43OTg4M0wxMC41NDAyIDcuMzYxNzRIMTEuMTMyM0wxMC42NTMzIDcuNzA5ODNMMTAuODM2MiA4LjI3MzE1TDEwLjM1NzMgNy45MjQ4Nkw5Ljg3ODE4IDguMjczMTVMMTAuMDYxMiA3LjcwOTgzTDkuNTgyMDMgNy4zNjE3NEgxMC4xNzQxTDEwLjM1NzMgNi43OTg4M1oiIGZpbGw9IiNFRkVGRUYiLz4KPHBhdGggZD0iTTEwLjM1NzMgOC43ODc2TDEwLjU0MDIgOS4zNTA4N0gxMS4xMzIzTDEwLjY1MzMgOS42OTg5NUwxMC44MzYyIDEwLjI2MjNMMTAuMzU3MyA5LjkxMzk5TDkuODc4MTggMTAuMjYyM0wxMC4wNjEyIDkuNjk4OTVMOS41ODIwMyA5LjM1MDg3SDEwLjE3NDFMMTAuMzU3MyA4Ljc4NzZaIiBmaWxsPSIjRUZFRkVGIi8+CjwvZz4KPGRlZnM+CjxjbGlwUGF0aCBpZD0iY2xpcDAiPgo8cmVjdCB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==")
+}@media all and (max-width:1440px){.a-tabset{max-width:480px;margin:auto}.a-tab-panels{padding:24px}.a-tab-panel .a-tab-heading{max-width:90%}.a-hr{margin:10px 0}}@media all and (max-height:768px){.a-qr img{max-width:300px}.a-services .a-dropdown-content .a-icon{font-size:20px}}@media all and (max-height:576px){.a-qr img{max-width:250px}}@media all and (max-width:1192px){.a-btn{padding:10px 16px}}@media all and (max-width:992px){.a-languages .a-tooltip .a-tooltiptext{left:-100%;transform:translateX(-4px)}}@media all and (max-width:600px){.a-dropdown-toggle{font-size:14px}.a-tab-panel .a-tab-heading{max-width:100%}.a-servcies .a-dropdown-content .a-dropdown-link .a-name-icon{margin-right:5px}.a-services .a-dropdown-content .a-icon{font-size:20px}.a-languages .a-tooltip .a-tooltiptext{display:none}}@media all and (max-width:456px){.a-tab-panel .a-tab-heading{font-size:16px;line-height:1.5}.a-page-title{font-size:22px}.a-tabset>label{margin-right:5px}.a-tabset>label>div{padding:12px 13px;height:44px}.a-tabset .a-collapse-list .a-collapse-btn{top:0;display:inline-flex}.a-tab-panels{padding:20px}.a-tabset .a-tabset label>div{font-size:14px;padding:0 10px}.a-column-2 .a-form-group{max-width:100%}.a-column:last-child .a-form-group:last-child{margin-bottom:20px}.a-form-group{margin-bottom:15px}}@media all and (max-width:400px){.a-body{overflow-x:hidden}.a-tabset .a-tabset label>div svg{display:none}.a-collapse-btn span{display:none}}@media all and (max-width:340px){.a-tab-panels{padding:12px}.a-tabset>label{height:43px;font-size:14px}.a-tab-panels .a-tabset>label{max-width:none}.a-tabset>label{margin-bottom:0}.a-tabset>label svg{width:18px;height:18px}}
+</style>
+
+<!-- Start embed -->
+<div class="a-body">
+    <div class="a-top-line">
+        <div class="a-container">
+            <div class="a-headbar">
+                <div id="logo" class="a-logo">
+                    Logo
+                </div>
+                <div style="display: flex;">
+                    <div id="services" class="a-services">
+                        <div class="a-dropdown" id="ServicesDropdown">
+                            <span class="a-dropdown-toggle">
+                                <span class="a-icon a-icon-services">
+                                    <svg viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L6.04,7.5L12,10.85L17.96,7.5L12,4.15M5,15.91L11,19.29V12.58L5,9.21V15.91M19,15.91V9.21L13,12.58V19.29L19,15.91Z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                {{ _("Services") }}
+                                <span class="a-icon a-icon-chevron">
+                                    <svg viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="a-dropdown-content">
+                                <ul class="a-dropdown-list">
+                                    {% for service in services %}
+                                        <li class="a-dropdown-item">
+                                            <a class="a-dropdown-link" href="{{ service.get('domain') }}">
+                                                <div>
+                                                    <span class="a-name-icon">
+                                                        <i class="mdi {{ service.get('service_icon') }} a-icon"></i>
+                                                    </span>
+                                                    <span class="a-name">
+                                                        {{ service.get('name') }}
+                                                    </span>
+                                                </div>
+                                                <div class="a-text-link">{{ service.get('domain') }}</div>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="languages" class="a-languages">
+                        <div class="a-dropdown">
+                            <span class="a-dropdown-toggle">
+                                <span class="a-icon a-icon-services a-icon-flag-{{ current_language.get('code') }}">
+                                </span>
+                                {{ _(current_language.get('name')) }}
+                                <span class="a-icon a-icon-chevron">
+                                    <svg viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                            <div class="a-dropdown-content">
+                                <ul class="a-dropdown-list">
+                                    {% if language_information %}
+                                        {% for language in language_information %}
+                                            {% if language.get('block') %}
+                                                <li class="a-dropdown-item a-dropdown-item-disabled a-tooltip">
+                                                    <span class="a-dropdown-link a-dropdown-link-disabled">
+                                                        <div>
+                                                            <span class="a-name-icon a-icon-flag-cn">
+                                                            </span>
+                                                            <span class="a-name">
+                                                                {{ _(language.get('name')) }}
+                                                            </span>
+                                                        </div>
+                                                    </span>
+                                                    <span class="a-tooltiptext">
+                                                        <span>{{ _("Comming Soon...") }}</span>
+                                                        {{ _("Use other language please. We are working on translation") }}
+                                                    </span>
+                                                </li>
+                                            {% else %}
+                                                <li class="a-dropdown-item">
+                                                    <a class="a-dropdown-link" href="#" data-language="{{ language.get('code') }}">
+                                                        <div>
+                                                            <span class="a-name-icon a-icon-flag-{{ language.get('code') }}">
+                                                            </span>
+                                                            <span class="a-name">
+                                                                {{ _(language.get('name')) }}
+                                                            </span>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        <li class="a-dropdown-item">
+                                            <a class="a-dropdown-link" href="#" data-language="{{ current_language.get('code') }}">
+                                                <div>
+                                                    <span class="a-name-icon a-icon-flag-{{ current_language.get('code') }}">
+                                                    </span>
+                                                    <span class="a-name">
+                                                        {{ _(current_language.get('name')) }}
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="a-main">
+        <div class="a-container">
+            <!-- Heading -->
+            <div class="a-heading">
+                <h1 class="a-page-title">{{ _("Welcome to EcoSystem 54 based service") }}</h1>
+                <p class="a-page-subtitle">{{ _("Please, choose the option you need") }}</p>
+            </div>
+
+            <div class="a-tabset tabset">
+
+                <!-- Tab SignIn -->
+                <input id="tabSignIn" type="radio" name="tabset" aria-controls="Sign In" class="active" checked>
+                <label for="tabSignIn" style="margin-bottom: 15px;">
+                    <div id="tabSignInInner">
+                        <svg viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z">
+                            </path>
+                        </svg>
+                        <span>{{ _("Sign In") }}</span>
+                    </div>
+                </label>
+
+                <!-- Tab SignUp -->
+                <input id="tabSignUp" type="radio" name="tabset" aria-controls="Sign Up">
+                <label for="tabSignUp" style="margin-bottom: 15px;">
+                    <div id="tabSignUpInner">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4M15,5.9C16.16,5.9 17.1,6.84 17.1,8C17.1,9.16 16.16,10.1 15,10.1A2.1,2.1 0 0,1 12.9,8A2.1,2.1 0 0,1 15,5.9M4,7V10H1V12H4V15H6V12H9V10H6V7H4M15,13C12.33,13 7,14.33 7,17V20H23V17C23,14.33 17.67,13 15,13M15,14.9C17.97,14.9 21.1,16.36 21.1,17V18.1H8.9V17C8.9,16.36 12,14.9 15,14.9Z">
+                            </path>
+                        </svg>
+                        <span>{{ _("Sign Up") }}</span>
+                    </div>
+                </label>
+
+                <!-- Button Help me 3 -->
+                <div class="a-collapse-list">
+                    <input class="a-collapse-open" type="checkbox" id="collapseBtnHelp">
+                    <label class="a-btn a-collapse-btn" for="collapseBtnHelp">
+                        <svg viewBox="0 0 24 24">
+                            <path fill="#fff;"
+                                d="M19.79,15.41C20.74,13.24 20.74,10.75 19.79,8.59L17.05,9.83C17.65,11.21 17.65,12.78 17.06,14.17L19.79,15.41M15.42,4.21C13.25,3.26 10.76,3.26 8.59,4.21L9.83,6.94C11.22,6.35 12.79,6.35 14.18,6.95L15.42,4.21M4.21,8.58C3.26,10.76 3.26,13.24 4.21,15.42L6.95,14.17C6.35,12.79 6.35,11.21 6.95,9.82L4.21,8.58M8.59,19.79C10.76,20.74 13.25,20.74 15.42,19.78L14.18,17.05C12.8,17.65 11.22,17.65 9.84,17.06L8.59,19.79M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z" />
+                        </svg>
+                        <span>{{ _("Help Me") }}</span>
+                    </label>
+                    <div class="a-collapse-painel">
+                        <div class="a-tab-panels">
+                            <!-- 1 -->
+                            <div class="a-step">
+                                <h4 class="a-heading">{{ _("1. Download application") }}</h4>
+                                <p>{{ _("First of all you need to download EcoSystem 54 application.") }}</p>
+                                <div class="a-apps" style="display: flex;">
+                                    <div style="text-align: center;">
+                                        <div><small>{{ _("Android") }}</small></div>
+                                        <img style="width: 100px;" src="data:image/png;base64,{{ android_app }}" alt="">
+                                    </div>
+                                    <div class="a-v-hr"></div>
+                                    <div style="text-align: center;">
+                                        <div><small>{{ _("iPhone") }}</small></div>
+                                        <img style="width: 100px;" src="data:image/png;base64,{{ ios_app }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 2 -->
+                            <div class="a-step">
+                                <h4 class="a-heading">
+                                    {{ _("2. Create an account") }}
+                                </h4>
+                                <p>{{ _("Create a new EcoSystem 54 account via sign up form or scanning QR code.") }}</p>
+                            </div>
+
+                            <!-- 3 -->
+                            <div class="a-step">
+                                <h4 class="a-heading">
+                                    {{ _("3. Contact your administrator") }}
+                                    <div class="a-tooltip">
+                                        <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z" />
+                                        </svg>
+                                        <span class="a-tooltiptext">
+                                            <span>{{ _("Account Verification") }}</span>
+                                            {{ _("After the registration process, you do not have any rights to view / create / delete content. After your confirmation, the administrator will assign you personal access.") }}
+                                        </span>
+                                    </div>
+                                </h4>
+                                <p>{{ _("You have been successfully registered. Please contact your administrator to define your role and get an access to the system.") }}</p>
+                            </div>
+
+                            <!-- 4 -->
+                            <div class="a-step">
+                                <h4 class="a-heading">
+                                    {{ _("4. So easy to use") }}
+                                    <div class="a-tooltip">
+                                        <svg style="width:20px;height:20px" viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20Z" />
+                                        </svg>
+                                        <span class="a-tooltiptext">
+                                            <span>{{ _("What is Profile service?") }}</span>
+                                            {{ _("Profile service is the right palce where you can add/change you personal information. In additional to this, you can also check you personal list of permissions.") }}
+                                        </span>
+                                    </div>
+                                </h4>
+                                <p>{{ _("As soon as administrator grants access, profile service will be available for you.") }}
+                                    <a class="a-link" href="#">{{ _("Go to Profile service") }}</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="a-tab-panels">
+                    <!-- Content SignIn -->
+                    <div id="contentSignIn" class="a-tab-panel">
+                        <div class="a-tabset tabset">
+                            <!-- Tab SignIn Form -->
+                            <input id="tabSignInForm" type="radio" name="tabsetSignIn" class="active" checked>
+                            <label for="tabSignInForm">
+                                <div id="tabSignInFormInner">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M17,7H22V17H17V19A1,1 0 0,0 18,20H20V22H17.5C16.95,22 16,21.55 16,21C16,21.55 15.05,22 14.5,22H12V20H14A1,1 0 0,0 15,19V5A1,1 0 0,0 14,4H12V2H14.5C15.05,2 16,2.45 16,3C16,2.45 16.95,2 17.5,2H20V4H18A1,1 0 0,0 17,5V7M2,7H13V9H4V15H13V17H2V7M20,15V9H17V15H20M8.5,12A1.5,1.5 0 0,0 7,10.5A1.5,1.5 0 0,0 5.5,12A1.5,1.5 0 0,0 7,13.5A1.5,1.5 0 0,0 8.5,12M13,10.89C12.39,10.33 11.44,10.38 10.88,11C10.32,11.6 10.37,12.55 11,13.11C11.55,13.63 12.43,13.63 13,13.11V10.89Z">
+                                        </path>
+                                    </svg>
+                                    <span>{{ _("Login/Password") }}</span>
+                                </div>
+                            </label>
+
+                            <!-- Tab SignIn QR -->
+                            <input id="tabSignInQR" type="radio" name="tabsetSignIn">
+                            <label for="tabSignInQR">
+                                <div id="tabSignInQRInner">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M3,11H5V13H3V11M11,5H13V9H11V5M9,11H13V15H11V13H9V11M15,11H17V13H19V11H21V13H19V15H21V19H19V21H17V19H13V21H11V17H15V15H17V13H15V11M19,19V15H17V19H19M15,3H21V9H15V3M17,5V7H19V5H17M3,3H9V9H3V3M5,5V7H7V5H5M3,15H9V21H3V15M5,17V19H7V17H5Z">
+                                        </path>
+                                    </svg>
+                                    <span>{{ _("QR code") }}</span>
+                                </div>
+                            </label>
+                            <div class="a-tab-panels" style="box-shadow: none;padding: 0;border: none;">
+                                    <!-- Content SignIn Form -->
+                                <div id="contentSignInForm" class="a-tab-panel">
+                                    <h3 class="a-tab-heading">{{ _("Sign into your EcoSystem 54 account via sign in form") }}</h3>
+                                    <form id="formSignIn" action="">
+                                        <div class="a-column a-column-2">
+                                            <div class="a-form-group">
+                                                <label for="inputEmailSignIn">{{ _("E-mail") }}</label>
+                                                <input id="inputEmailSignIn" class="a-form-control" type="email" name="email_signin" placeholder="{{ _('Enter email') }}" required="required">
+                                            </div>
+                                            <div class="a-form-group">
+                                                <label for="inputPassword">{{ _("Password") }}</label>
+                                                <input id="inputPassword" class="a-form-control" type="password" name="password_signin" placeholder="{{ _('Enter password') }}" required="required">
+                                            </div>
+                                        </div>
+                                        <button id="btnSignInForm" class="a-btn a-btn-primary" style="width: 100%;">
+                                            <svg viewBox="0 0 24 24">
+                                                <path
+                                                    d="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z">
+                                                </path>
+                                            </svg>
+                                            <span>{{ _("Sign In") }}</span>
+                                        </button>
+                                    </form>
+                                    <div id="SignOn">
+                                        <div class="a-hr">
+                                            <div class="a-hr-text">
+                                                {{ _("Or") }}
+                                            </div>
+                                        </div>
+                                        <form id="formSignOn" action="">
+                                            <button id="btnSignOnForm" class="a-btn a-btn-outline-primary" style="width: 100%;">
+                                                <svg viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M19,3H5C3.89,3 3,3.89 3,5V9H5V5H19V19H5V15H3V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M10.08,15.58L11.5,17L16.5,12L11.5,7L10.08,8.41L12.67,11H3V13H12.67L10.08,15.58Z">
+                                                    </path>
+                                                </svg>
+                                                <span>{{ _("Sign In with AUTH service") }}</span>
+                                            </button>
+                                        </form>
+                                        <div class="a-notify" style="margin-top: 15px;">
+                                            <div class="a-notify-head"></div>
+                                            <div class="a-notify-body">
+                                                <span>
+                                                    {{ _("Single Sign-On - Technology to sign in by Auth service session.") }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                    <!-- Content SignIn QR -->
+                                <div id="contentSignInQR" class="a-tab-panel">
+                                    <h3 class="a-tab-heading">{{ _("Sign into your EcoSystem 54 account by scanning QR code") }}</h3>
+                                    <div class="a-qr" id="qrLogin">
+                                        <!-- <img src="data:image/png;base64,{{ authentication_qr_code }}" alt=""> -->
+                                    </div>
+                                    <span class="a-qr-generate" id="updateSignInQR">
+                                        {{ _("Get a new QR code") }}
+                                        <svg fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12,6V9L16,5L12,1V4A8,8 0 0,0 4,12C4,13.57 4.46,15.03 5.24,16.26L6.7,14.8C6.25,13.97 6,13 6,12A6,6 0 0,1 12,6M18.76,7.74L17.3,9.2C17.74,10.04 18,11 18,12A6,6 0 0,1 12,18V15L8,19L12,23V20A8,8 0 0,0 20,12C20,10.43 19.54,8.97 18.76,7.74Z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Content SignUp -->
+                    <div id="contentSignUp" class="a-tab-panel">
+                        <div class="a-tabset tabset">
+                            <!-- Tab SignUp Form -->
+                            <input id="tabSignUpForm" type="radio" name="tabsetinSignUp" class="active" checked>
+                            <label for="tabSignUpForm">
+                                <div id="tabSignUpFormInner">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M17,7H22V17H17V19A1,1 0 0,0 18,20H20V22H17.5C16.95,22 16,21.55 16,21C16,21.55 15.05,22 14.5,22H12V20H14A1,1 0 0,0 15,19V5A1,1 0 0,0 14,4H12V2H14.5C15.05,2 16,2.45 16,3C16,2.45 16.95,2 17.5,2H20V4H18A1,1 0 0,0 17,5V7M2,7H13V9H4V15H13V17H2V7M20,15V9H17V15H20M8.5,12A1.5,1.5 0 0,0 7,10.5A1.5,1.5 0 0,0 5.5,12A1.5,1.5 0 0,0 7,13.5A1.5,1.5 0 0,0 8.5,12M13,10.89C12.39,10.33 11.44,10.38 10.88,11C10.32,11.6 10.37,12.55 11,13.11C11.55,13.63 12.43,13.63 13,13.11V10.89Z">
+                                        </path>
+                                    </svg>
+                                    <span>{{ _("Register form") }}</span>
+                                </div>
+                            </label>
+
+                                <!-- Tab SignUp QR -->
+                            <input id="tabSignUpQR" type="radio" name="tabsetinSignUp">
+                            <label for="tabSignUpQR">
+                                <div id="tabSignUpQRInner">
+                                    <svg viewBox="0 0 24 24">
+                                        <path
+                                            d="M3,11H5V13H3V11M11,5H13V9H11V5M9,11H13V15H11V13H9V11M15,11H17V13H19V11H21V13H19V15H21V19H19V21H17V19H13V21H11V17H15V15H17V13H15V11M19,19V15H17V19H19M15,3H21V9H15V3M17,5V7H19V5H17M3,3H9V9H3V3M5,5V7H7V5H5M3,15H9V21H3V15M5,17V19H7V17H5Z">
+                                        </path>
+                                    </svg>
+                                    <span>{{ _("QR code") }}</span>
+                                </div>
+                            </label>
+
+                            <div class="a-tab-panels" style="box-shadow: none;padding: 0;border: none;">
+                                <!-- Content SignUp Form -->
+                                <div id="contentSignUpForm" class="a-tab-panel">
+                                    <h3 class="a-tab-heading">{{ _("Create a new EcoSystem 54 account via sign up form") }}</h3>
+                                    <form id="formSignUp" action="">
+                                        <div class="a-column a-column-2">
+                                            <div class="a-form-group">
+                                                <label for="inputFirstName">{{ _("First name") }}</label>
+                                                <input id="inputFirstName" class="a-form-control" type="text" name="first_name_signup" placeholder="{{ _('Enter first name') }}" required="required">
+                                            </div>
+                                            <div class="a-form-group">
+                                                <label for="inputSurname">{{ _("Surname") }}</label>
+                                                <input id="inputSurname" class="a-form-control" type="text" name="surname_signup" placeholder="{{ _('Enter surname') }}" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="a-column a-column-1">
+                                            <div class="a-form-group">
+                                                <label for="inputEmailSignUp">{{ _("E-mail") }}</label>
+                                                <input id="inputEmailSignUp" class="a-form-control" type="email" name="email_signup" placeholder="{{ _('Enter email') }}" required="required">
+                                            </div>
+                                        </div>
+                                        <div class="a-column a-column-2">
+                                            <div class="a-form-group">
+                                                <label for="inputPasswordSignUp">{{ _("Password") }}</label>
+                                                <input id="inputPasswordSignUp" class="a-form-control" type="password" name="password_signup" placeholder="{{ _('Enter password') }}" required="required">
+                                            </div>
+                                            <div class="a-form-group">
+                                                <label for="inputPasswordSignUpConfirm">{{ _("Confirm password") }}</label>
+                                                <input id="inputPasswordSignUpConfirm" class="a-form-control" type="password" name="password_confirm_signup" placeholder="{{ _('Confirm password') }}" required="required">
+                                            </div>
+                                        </div>
+                                        <button class="a-btn a-btn-primary" id="btnSignUpForm" style="width: 100%;">
+                                            <svg viewBox="0 0 24 24">
+                                                <path
+                                                    d="M15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4M15,5.9C16.16,5.9 17.1,6.84 17.1,8C17.1,9.16 16.16,10.1 15,10.1A2.1,2.1 0 0,1 12.9,8A2.1,2.1 0 0,1 15,5.9M4,7V10H1V12H4V15H6V12H9V10H6V7H4M15,13C12.33,13 7,14.33 7,17V20H23V17C23,14.33 17.67,13 15,13M15,14.9C17.97,14.9 21.1,16.36 21.1,17V18.1H8.9V17C8.9,16.36 12,14.9 15,14.9Z">
+                                                </path>
+                                            </svg>
+                                            <span>{{ _("Sign Up") }}</span>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <!-- Content SignUp QR -->
+                                <div id="contentSignUpQR" class="a-tab-panel">
+                                    <h3 class="a-tab-heading">{{ _("Create a new EcoSystem 54 account by scanning QR code") }}
+                                    </h3>
+                                    <div class="a-qr" id="qrRegistration">
+                                        <!-- <img src="data:image/png;base64,{{ registration_qr_code }}" alt=""> -->
+                                    </div>
+                                    <span class="a-qr-generate" id="updateSignUpQR">
+                                        {{ _("Get a new QR code") }}
+                                        <svg fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M12,6V9L16,5L12,1V4A8,8 0 0,0 4,12C4,13.57 4.46,15.03 5.24,16.26L6.7,14.8C6.25,13.97 6,13 6,12A6,6 0 0,1 12,6M18.76,7.74L17.3,9.2C17.74,10.04 18,11 18,12A6,6 0 0,1 12,18V15L8,19L12,23V20A8,8 0 0,0 20,12C20,10.43 19.54,8.97 18.76,7.74Z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- JS -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{ scripts.get('js') | safe }}
+<!-- End JS -->
+<!-- End embed -->

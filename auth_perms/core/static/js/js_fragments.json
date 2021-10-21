@@ -1,0 +1,13 @@
+{
+    "make_sso_login_base": "make_sso_login_base.js",
+    "make_sso_login_fetch_part": "make_sso_login_fetch_part.js",
+    "make_sso_login_form_part": "make_sso_login_form_part.js",
+    "make_classic_login_base": "make_classic_login_base.js",
+    "make_classic_login_fetch_part": "make_classic_login_fetch_part.js",
+    "save_session_base": "save_session_base.js",
+    "save_session_fetch_part": "save_session_fetch_part.js",
+    "authorization_response_event": "authorization_response_event.js",
+    "check_cookie_base": "check_cookie_base.js",
+    "update_qr_function": "update_qr_function.js",
+    "after_save_session_function": "after_save_session_function.js"
+}

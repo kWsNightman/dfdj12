@@ -1,0 +1,185 @@
+{% extends 'admin_panel/base.html' %}
+
+{% block content %}
+
+    <div class="dt-page__header">
+        <h1 class="dt-page__title">Profile</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-4 col-sm-6">
+            <div class="dt-card">
+                <div class="dt-card__body">
+                    <div>
+                        User:
+                        <strong>{{ g.actor.uinfo['first_name'] }} {{ g.actor.uinfo['last_name'] }}</strong><br>
+                        UUID: <strong>{{ g.actor.uuid }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="dt-card">
+
+                <div class="dt-card__header">
+                    <div class="dt-card__heading">
+                        <h3 class="dt-card__title">Information</h3>
+                    </div>
+                </div>
+                <div class="dt-card__body">
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-first-name">First name</label>
+                                <input type="text" class="form-control" id="edit-actor-form-first-name"
+                                       name="first_name" value="{{ g.actor.uinfo['first_name'] }}">
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-last-name">Last name</label>
+                                <input type="text" class="form-control" id="edit-actor-form-last-name"
+                                       name="last_name" value="{{ g.actor.uinfo['last_name'] }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-e-mail">E-mail</label>
+                                <input type="e-mail" class="form-control" id="edit-actor-form-e-mail"
+                                       name="email" value="{{ g.actor.uinfo['email'] }}" disabled>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-birthday">Birthday</label>
+                                <input type="date" class="form-control" id="edit-actor-form-birthday"
+                                       name="birthday">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-groups">Groups</label>
+                                <select class="form-control" id="edit-actor-form-groups" name="groups"
+                                        multiple
+                                        data-live-search="true" disabled>
+                                    {% for group in g.actor.get_groups() %}
+                                        <option selected>{{ group['uinfo']['group_name'] }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label for="edit-actor-form-password">New password</label>
+                                <input type="password" class="form-control" id="edit-actor-form-password"
+                                       name="password">
+                            </div>
+                        </div>
+                    </form>
+                    <button id="update" onclick="update_actor()" class="btn btn-primary">Update profile</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="dt-card">
+                <div class="dt-card__header">
+                    <div class="dt-card__heading">
+                        <h3 class="dt-card__title">Your permissions</h3>
+                    </div>
+                </div>
+                <div class="dt-card__body">
+                    <div class="table-responsive">
+                        <table class="actor-perms display">
+                            <thead>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Type
+                            </th>
+                            <th>
+                                Value
+                            </th>
+                            </thead>
+                            <tbody>
+                            {% if g.actor.is_root %}
+                                <tr>
+                                    <td colspan="4" class="dataTables_empty">You are root all permissions allowed</td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                </tr>
+                            {% elif g.actor.is_banned %}
+                                <tr>
+                                    <td colspan="4" class="dataTables_empty">You are banned all permissions denied</td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                </tr>
+                            {% elif g.actor.is_admin %}
+                                <tr>
+                                    <td colspan="4" class="dataTables_empty">You are admin all permissions allowed</td>
+                                    <td style="display: none;"></td>
+                                    <td style="display: none;"></td>
+                                </tr>
+                            {% else %}
+                                {% for perm in g.actor.get_permissions()['compiled']['priority'] %}
+                                    <tr>
+                                        <td>{{ perm.description }}</td>
+                                        <td>{{ perm.perm_type }}</td>
+                                        {% if perm.perm_value != None %}
+                                            {% if perm.perm_value == 1 %}
+                                                <td style="color: green">allowed</td>
+                                            {% elif perm.perm_value == 0 %}
+                                                <td style="color: red">denied</td>
+                                            {% endif %}
+                                        {% elif perm.default_value != None %}
+                                            {% if perm.default_value == 1 %}
+                                                <td style="color: green">allowed</td>
+                                            {% elif perm.default_value == 0 %}
+                                                <td style="color: red">denied</td>
+                                            {% endif %}
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    {{ super() }}
+
+    <script>
+        $(document).ready(function () {
+            $('.actor-perms').DataTable({
+                "searching": false,
+                "paging": false,
+                "info": false,
+                order: [[1, 'asc']]
+            });
+            $("#edit-actor-form-groups").selectpicker();
+        })
+
+        function update_actor() {
+            let first_name = $('input[name="first_name"]').val()
+            let last_name = $('input[name="last_name"]').val()
+            let password = $('input[name="password"]').val()
+            data = {
+                'first_name': first_name, 'last_name': last_name, 'password': password
+            }
+            fetch('{{ url_for('auth_submodule.admin_profile') }}', {
+                method: "PUT",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (response.ok) {
+                    document.location.reload()
+                }
+            })
+        }
+    </script>
+
+{% endblock %}

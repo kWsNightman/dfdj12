@@ -1,0 +1,38 @@
+.link-descr {
+    display: inline-flex;
+    cursor: pointer;
+    transition: all ease .2s;
+}
+
+.link-descr.open {
+    color: #038fde;
+}
+
+.link-descr:hover {
+    color: #038fde;
+    transition: all ease .2s;
+}
+
+.link-descr__container {
+    display: flex;
+    align-items: center;
+
+}
+
+.link-descr__icon {
+    width: 26px;
+    height: 26px;
+}
+
+.link-descr__text {
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.link__status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-left: 3px;
+}
