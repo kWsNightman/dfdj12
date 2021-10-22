@@ -24,7 +24,7 @@ def form():
         session.add(FormModel(data=data))
         session.commit()
         return redirect(url_for('result'), code=302)
-    return render_template('dfdj12/dinamicformapp/dinamicform.html', context='dawdawd')
+    return render_template('dfdj12/dinamicformapp/dinamicform.html')
 
 
 @app.route('/result')
